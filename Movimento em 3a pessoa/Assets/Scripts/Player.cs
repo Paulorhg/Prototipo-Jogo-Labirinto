@@ -6,18 +6,23 @@ public class Player : MonoBehaviour
 {
 
     private Animator anim;
+    GameObject shield;
+    GameObject weapon;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        shield = GameObject.FindGameObjectWithTag("Shield");
+        weapon = GameObject.FindGameObjectWithTag("Weapon");
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0) && !anim.GetBool("attack")){
 
             StartCoroutine("Attack");
             
@@ -27,10 +32,15 @@ public class Player : MonoBehaviour
         {
 
             anim.SetBool("defend", true);
+            shield.GetComponent<BoxCollider>().enabled = true;
 
         }
         else
+        {
             anim.SetBool("defend", false);
+            shield.GetComponent<BoxCollider>().enabled = false;
+        }
+            
 
     }
 
@@ -39,9 +49,13 @@ public class Player : MonoBehaviour
     {
         if (anim.GetBool("walk"))
             anim.SetBool("walk", false);
+
         anim.SetBool("attack", true);
-        yield return new WaitForSeconds(.7f);
+        weapon.GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(.8f);
+
         anim.SetBool("attack", false);
+        weapon.GetComponent<BoxCollider>().enabled = false;
     }
 
 
