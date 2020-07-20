@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Weapon
   - Shield
+  - Enemy
   layers:
   - Default
   - TransparentFX

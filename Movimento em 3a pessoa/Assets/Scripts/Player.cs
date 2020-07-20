@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
         anim.SetBool("attack", true);
         weapon.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(.71f);
 
         anim.SetBool("attack", false);
         weapon.GetComponent<BoxCollider>().enabled = false;
