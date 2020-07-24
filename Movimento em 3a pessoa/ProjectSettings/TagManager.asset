@@ -8,6 +8,15 @@ TagManager:
   - Weapon
   - Shield
   - Enemy
+  - Canvas
+  - Panel
+  - Slots
+  - DraggingItem
+  - Slot
+  - Item
+  - ItemIcon
+  - MainInventory
+  - EquipmentSystem
   layers:
   - Default
   - TransparentFX

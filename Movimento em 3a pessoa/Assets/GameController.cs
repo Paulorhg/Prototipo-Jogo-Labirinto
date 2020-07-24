@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -37,5 +37,6 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(2.7f);
         gameOver.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 }

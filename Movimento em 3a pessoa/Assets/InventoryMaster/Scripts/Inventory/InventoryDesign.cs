@@ -86,7 +86,8 @@ public class InventoryDesign : MonoBehaviour
     {
         Image slot = null;
 #if UNITY_EDITOR
-        Object prefab = PrefabUtility.CreateEmptyPrefab("Assets/InventoryMaster/Resources/Prefabs/Slot - Inventory.prefab");
+        Object prefab = PrefabUtility.SaveAsPrefabAsset(new GameObject(), "Assets/InventoryMaster/Resources/Prefabs/Slot - Inventory.prefab");
+
 #endif
 
         for (int i = 0; i < transform.GetChild(1).childCount; i++)
@@ -99,7 +100,7 @@ public class InventoryDesign : MonoBehaviour
             slot.fillCenter = slotDesignTemp.fillCenter;
         }
 #if UNITY_EDITOR
-        PrefabUtility.ReplacePrefab(slot.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
+        PrefabUtility.SaveAsPrefabAssetAndConnect(slot.gameObject, "Assets/InventoryMaster/Resources/Prefabs/Slot - Inventory.prefab", InteractionMode.AutomatedAction);
 #endif
 
     }
