@@ -11,6 +11,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     HealthBar health;
 
+    [SerializeField]
+    private float damage;
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +29,14 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && !_anim.GetBool("attack")){
+        if (Input.GetMouseButtonDown(0) && !_anim.GetBool("attack") && !_anim.GetBool("defend") && !_anim.GetBool("gethit"))
+        {
 
             StartCoroutine("Attack");
             
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && !_anim.GetBool("attack") && !_anim.GetBool("gethit"))
         {
 
             _anim.SetBool("defend", true);
@@ -41,6 +47,7 @@ public class Player : MonoBehaviour
         {
             _anim.SetBool("defend", false);
             shield.GetComponent<BoxCollider>().enabled = false;
+            shield.GetComponent<Shield>().DefenseDone();
         }
             
 
@@ -50,15 +57,36 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("inimigo bateu");
-            health.SetHealth(20);
-
-            if(health.GetHealth() <= 0)
+            Shield shieldScr = shield.GetComponent<Shield>();
+            if (shieldScr.GetDefended())
             {
-                _anim.SetBool("dead", true);
+                shieldScr.DefenseDone();
+                Debug.Log("Defendido");
             }
+            else
+            {
+                Debug.Log("inimigo bateu");
+                health.TakeDamage(other.gameObject.GetComponent<Enemy>().GetDamage());
+
+                if (health.GetHealth() <= 0)
+                {
+                    _anim.SetBool("dead", true);
+                }
+                else
+                    StartCoroutine("GetHit");
+            }
+            
         }
     }
+
+
+    public float GetDamage()
+    {
+        return damage + weapon.GetComponent<Weapon>().GetDamage();
+    }
+
+
+
 
 
     IEnumerator Attack()
@@ -74,5 +102,14 @@ public class Player : MonoBehaviour
         weapon.GetComponent<BoxCollider>().enabled = false;
     }
 
+    IEnumerator GetHit()
+    {
+        if (_anim.GetBool("walk"))
+            _anim.SetBool("walk", false);
+
+        _anim.SetBool("gethit", true);
+        yield return new WaitForSeconds(.85f);
+        _anim.SetBool("gethit", false);
+    }
 
 }

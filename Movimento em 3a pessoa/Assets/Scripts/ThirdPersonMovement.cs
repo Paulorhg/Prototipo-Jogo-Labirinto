@@ -12,8 +12,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
     //Gravidade
-    public float Gravity = -9.81f;
-    private float _velocity;
+    public float gravity = -9.81f;
+    private Vector3 _velocity;
 
 
     public float turnSmoothTime = 0.1f;
@@ -29,14 +29,15 @@ public class ThirdPersonMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        //if (controller.isGrounded && _velocity < 0)
-        //    _velocity = 0f;
-        //else
-        //    _velocity += Gravity * Time.deltaTime;
+        if (controller.isGrounded && _velocity.y < 0)
+            _velocity.y = 0f;
 
-        Vector3 direction = new Vector3(horizontal, _velocity, vertical).normalized;
+        _velocity.y += gravity * Time.deltaTime;
+        controller.Move(_velocity * Time.deltaTime);
 
-        if(direction.magnitude >= 0.1f && !anim.GetBool("attack") && !anim.GetBool("defend") && !anim.GetBool("dead"))
+        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+
+        if(direction.magnitude >= 0.1f && !anim.GetBool("attack") && !anim.GetBool("defend") && !anim.GetBool("dead") && !anim.GetBool("gethit"))
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -44,8 +45,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            if(!anim.GetBool("attack"))
-                anim.SetBool("walk", true);
+            anim.SetBool("walk", true);
         }
         else
             anim.SetBool("walk", false);

@@ -19,11 +19,11 @@ public class HealthBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            SetHealth(20);
+            TakeDamage(20);
         }
     }
 
-    public void SetHealth(int damage)
+    public void TakeDamage(float damage)
     {
         if(health > 0)
         {
