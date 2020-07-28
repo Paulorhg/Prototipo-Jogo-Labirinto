@@ -297,6 +297,7 @@ public class PlayerInventory : MonoBehaviour
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 characterSystemInventory.closeInventory();
+                
             }
         }
 
@@ -311,13 +312,17 @@ public class PlayerInventory : MonoBehaviour
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 mainInventory.closeInventory();
+                
             }
         }
 
         if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
         {
             if (!craftSystem.activeSelf)
+            {
                 craftSystemInventory.openInventory();
+            }
+                
             else
             {
                 if (cS != null)
@@ -325,6 +330,7 @@ public class PlayerInventory : MonoBehaviour
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 craftSystemInventory.closeInventory();
+                
             }
         }
 

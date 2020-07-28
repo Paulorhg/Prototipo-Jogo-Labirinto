@@ -12,10 +12,14 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     Image gameOver;
+
+    [SerializeField]
+    GameObject inventoryCanvas;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        inventoryCanvas.SetActive(true);
     }
 
     // Update is called once per frame

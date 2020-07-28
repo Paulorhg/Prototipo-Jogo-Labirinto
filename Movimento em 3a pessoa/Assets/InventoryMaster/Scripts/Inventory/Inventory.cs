@@ -149,12 +149,14 @@ public class Inventory : MonoBehaviour
     public void closeInventory()
     {
         this.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         checkIfAllInventoryClosed();
     }
 
     public void openInventory()
     {
         this.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         if (InventoryOpen != null)
             InventoryOpen();
     }
