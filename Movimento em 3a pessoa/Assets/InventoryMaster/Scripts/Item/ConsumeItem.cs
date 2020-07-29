@@ -6,7 +6,7 @@ using System;
 
 public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 {
-    public Item item;
+    public Item2 item;
     private static Tooltip tooltip;
     public ItemType[] itemTypeOfSlot;
     public static EquipmentSystem eS;
@@ -93,7 +93,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                                     {
                                         GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
-                                        Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
+                                        Item2 otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
                                         if (item.itemType == ItemType.UFPS_Weapon)
                                         {
                                             inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
@@ -141,7 +141,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
                 {
 
-                    Item itemFromDup = null;
+                    Item2 itemFromDup = null;
                     if (duplication != null)
                         itemFromDup = duplication.GetComponent<ItemOnObject>().item;
 
@@ -187,7 +187,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         if (eS != null)
             itemTypeOfSlot = eS.itemTypeOfSlots;
 
-        Item itemFromDup = null;
+        Item2 itemFromDup = null;
         if (duplication != null)
             itemFromDup = duplication.GetComponent<ItemOnObject>().item;       
 
@@ -224,7 +224,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                         {
                             GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
-                            Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
+                            Item2 otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
                             if (item.itemType == ItemType.UFPS_Weapon)
                             {
                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
@@ -303,7 +303,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
     public void createDuplication(GameObject Item)
     {
-        Item item = Item.GetComponent<ItemOnObject>().item;
+        Item2 item = Item.GetComponent<ItemOnObject>().item;
         GameObject dup = mainInventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
         Item.GetComponent<ConsumeItem>().duplication = dup;
         dup.GetComponent<ConsumeItem>().duplication = Item;

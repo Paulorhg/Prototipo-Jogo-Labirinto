@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     public bool mainInventory;
     [SerializeField]
-    public List<Item> ItemsInInventory = new List<Item>();
+    public List<Item2> ItemsInInventory = new List<Item2>();
     [SerializeField]
     public int height;
     [SerializeField]
@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
     InputManager inputManagerDatabase;
 
     //event delegates for consuming, gearing
-    public delegate void ItemDelegate(Item item);
+    public delegate void ItemDelegate(Item2 item);
     public static event ItemDelegate ItemConsumed;
     public static event ItemDelegate ItemEquip;
     public static event ItemDelegate UnEquipItem;
@@ -189,19 +189,19 @@ public class Inventory : MonoBehaviour
 
 
 
-    public void ConsumeItem(Item item)
+    public void ConsumeItem(Item2 item)
     {
         if (ItemConsumed != null)
             ItemConsumed(item);
     }
 
-    public void EquiptItem(Item item)
+    public void EquiptItem(Item2 item)
     {
         if (ItemEquip != null)
             ItemEquip(item);
     }
 
-    public void UnEquipItem1(Item item)
+    public void UnEquipItem1(Item2 item)
     {
         if (UnEquipItem != null)
             UnEquipItem(item);
@@ -391,7 +391,7 @@ public class Inventory : MonoBehaviour
 
         SlotContainerRectTransform.localPosition = Vector3.zero;
 
-        List<Item> itemsToMove = new List<Item>();
+        List<Item2> itemsToMove = new List<Item2>();
         List<GameObject> slotList = new List<GameObject>();
         foreach (Transform child in SlotContainer.transform)
         {
@@ -424,7 +424,7 @@ public class Inventory : MonoBehaviour
 
         if (itemsToMove != null && ItemsInInventory.Count < width * height)
         {
-            foreach (Item i in itemsToMove)
+            foreach (Item2 i in itemsToMove)
             {
                 addItemToInventory(i.itemID);
             }
@@ -452,7 +452,7 @@ public class Inventory : MonoBehaviour
             SlotContainerRectTransform = SlotContainer.GetComponent<RectTransform>();
         SlotContainerRectTransform.localPosition = Vector3.zero;
 
-        List<Item> itemsToMove = new List<Item>();
+        List<Item2> itemsToMove = new List<Item2>();
         List<GameObject> slotList = new List<GameObject>();
         foreach (Transform child in SlotContainer.transform)
         {
@@ -485,7 +485,7 @@ public class Inventory : MonoBehaviour
 
         if (itemsToMove != null && ItemsInInventory.Count < width * height)
         {
-            foreach (Item i in itemsToMove)
+            foreach (Item2 i in itemsToMove)
             {
                 addItemToInventory(i.itemID);
             }
@@ -718,9 +718,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public List<Item> getItemList()
+    public List<Item2> getItemList()
     {
-        List<Item> theList = new List<Item>();
+        List<Item2> theList = new List<Item2>();
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
             if (SlotContainer.transform.GetChild(i).childCount != 0)
@@ -754,14 +754,14 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public GameObject getItemGameObjectByName(Item item)
+    public GameObject getItemGameObjectByName(Item2 item)
     {
         for (int k = 0; k < SlotContainer.transform.childCount; k++)
         {
             if (SlotContainer.transform.GetChild(k).childCount != 0)
             {
                 GameObject itemGameObject = SlotContainer.transform.GetChild(k).GetChild(0).gameObject;
-                Item itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
+                Item2 itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
                 if (itemObject.itemName.Equals(item.itemName))
                 {
                     return itemGameObject;
@@ -771,14 +771,14 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    public GameObject getItemGameObject(Item item)
+    public GameObject getItemGameObject(Item2 item)
     {
         for (int k = 0; k < SlotContainer.transform.childCount; k++)
         {
             if (SlotContainer.transform.GetChild(k).childCount != 0)
             {
                 GameObject itemGameObject = SlotContainer.transform.GetChild(k).GetChild(0).gameObject;
-                Item itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
+                Item2 itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
                 if (itemObject.Equals(item))
                 {
                     return itemGameObject;
@@ -800,7 +800,7 @@ public class Inventory : MonoBehaviour
         inventoryDesign.fillCenter = image.fillCenter;
     }
 
-    public void deleteItem(Item item)
+    public void deleteItem(Item2 item)
     {
         for (int i = 0; i < ItemsInInventory.Count; i++)
         {
@@ -811,7 +811,7 @@ public class Inventory : MonoBehaviour
 
     
 
-    public void deleteItemFromInventory(Item item)
+    public void deleteItemFromInventory(Item2 item)
     {
         for (int i = 0; i < ItemsInInventory.Count; i++)
         {
@@ -820,7 +820,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void deleteItemFromInventoryWithGameObject(Item item)
+    public void deleteItemFromInventoryWithGameObject(Item2 item)
     {
         for (int i = 0; i < ItemsInInventory.Count; i++)
         {
@@ -835,7 +835,7 @@ public class Inventory : MonoBehaviour
             if (SlotContainer.transform.GetChild(k).childCount != 0)
             {
                 GameObject itemGameObject = SlotContainer.transform.GetChild(k).GetChild(0).gameObject;
-                Item itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
+                Item2 itemObject = itemGameObject.GetComponent<ItemOnObject>().item;
                 if (itemObject.Equals(item))
                 {
                     Destroy(itemGameObject);
@@ -845,13 +845,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public int getPositionOfItem(Item item)
+    public int getPositionOfItem(Item2 item)
     {
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
             if (SlotContainer.transform.GetChild(i).childCount != 0)
             {
-                Item item2 = SlotContainer.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item;
+                Item2 item2 = SlotContainer.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item;
                 if (item.Equals(item2))
                     return i;
             }

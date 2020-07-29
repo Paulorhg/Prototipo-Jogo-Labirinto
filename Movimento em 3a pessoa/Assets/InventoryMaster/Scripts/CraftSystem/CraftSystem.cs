@@ -30,10 +30,10 @@ public class CraftSystem : MonoBehaviour
     public Image arrowImage;
 
     //List<CraftSlot> slots = new List<CraftSlot>();
-    public List<Item> itemInCraftSystem = new List<Item>();
+    public List<Item2> itemInCraftSystem = new List<Item2>();
     public List<GameObject> itemInCraftSystemGameObject = new List<GameObject>();
     BlueprintDatabase blueprintDatabase;
-    public List<Item> possibleItems = new List<Item>();
+    public List<Item2> possibleItems = new List<Item2>();
     public List<bool> possibletoCreate = new List<bool>();
 
 
@@ -182,7 +182,7 @@ public class CraftSystem : MonoBehaviour
 
     }
 
-    public void deleteItems(Item item)
+    public void deleteItems(Item2 item)
     {
         for (int i = 0; i < blueprintDatabase.blueprints.Count; i++)
         {

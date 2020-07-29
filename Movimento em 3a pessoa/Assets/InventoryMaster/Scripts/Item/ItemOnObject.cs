@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ItemOnObject : MonoBehaviour                   //Saves the Item in the slot
 {
-    public Item item;                                       //Item 
+    public Item2 item;                                       //Item 
     private Text text;                                      //text for the itemValue
     private Image image;
 

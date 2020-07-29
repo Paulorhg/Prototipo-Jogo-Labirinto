@@ -10,7 +10,7 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public GameObject tooltipGameObject;                        //the tooltip as a GameObject
     public RectTransform canvasRectTransform;                    //the panel(Inventory Background) RectTransform
     public RectTransform tooltipRectTransform;                  //the tooltip RectTransform
-    private Item item;
+    private Item2 item;
 
 
     void Start()

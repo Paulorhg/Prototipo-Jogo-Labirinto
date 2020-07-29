@@ -634,7 +634,7 @@ public class IM_Manager : EditorWindow
     void addItem()                                          //add new item to the itemdatabase
     {
         EditorUtility.SetDirty(inventoryItemList);          //message scriptable object for incoming changes
-        Item newItem = new Item();                          //create a empty mask of an item
+        Item2 newItem = new Item2();                          //create a empty mask of an item
         newItem.itemName = "New Item";                      //set the name as "new Item"
         inventoryItemList.itemList.Add(newItem);            //and add this to the itemdatabase
         EditorUtility.SetDirty(inventoryItemList);          //message scriptable object that you added something

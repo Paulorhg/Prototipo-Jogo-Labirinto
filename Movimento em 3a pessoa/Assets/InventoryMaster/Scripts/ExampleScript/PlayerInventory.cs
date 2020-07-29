@@ -61,7 +61,7 @@ public class PlayerInventory : MonoBehaviour
         Inventory.ItemEquip -= EquipWeapon;
     }
 
-    void EquipWeapon(Item item)
+    void EquipWeapon(Item2 item)
     {
         if (item.itemType == ItemType.Weapon)
         {
@@ -69,7 +69,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void UnEquipWeapon(Item item)
+    void UnEquipWeapon(Item2 item)
     {
         if (item.itemType == ItemType.Weapon)
         {
@@ -77,7 +77,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void OnBackpack(Item item)
+    void OnBackpack(Item2 item)
     {
         if (item.itemType == ItemType.Backpack)
         {
@@ -92,7 +92,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void UnEquipBackpack(Item item)
+    void UnEquipBackpack(Item2 item)
     {
         if (item.itemType == ItemType.Backpack)
             changeInventorySize(normalSize);
@@ -201,7 +201,7 @@ public class PlayerInventory : MonoBehaviour
     //}
 
 
-    public void OnConsumeItem(Item item)
+    public void OnConsumeItem(Item2 item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
@@ -241,7 +241,7 @@ public class PlayerInventory : MonoBehaviour
         //}
     }
 
-    public void OnGearItem(Item item)
+    public void OnGearItem(Item2 item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
@@ -261,7 +261,7 @@ public class PlayerInventory : MonoBehaviour
         //}
     }
 
-    public void OnUnEquipItem(Item item)
+    public void OnUnEquipItem(Item2 item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {

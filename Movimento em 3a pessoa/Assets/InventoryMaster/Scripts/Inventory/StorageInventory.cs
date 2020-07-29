@@ -14,7 +14,7 @@ public class StorageInventory : MonoBehaviour
     public GameObject inventory;
 
     [SerializeField]
-    public List<Item> storageItems = new List<Item>();
+    public List<Item2> storageItems = new List<Item2>();
 
     [SerializeField]
     private ItemDataBaseList itemDatabase;
@@ -46,7 +46,7 @@ public class StorageInventory : MonoBehaviour
 
     public void addItemToStorage(int id, int value)
     {
-        Item item = itemDatabase.getItemByID(id);
+        Item2 item = itemDatabase.getItemByID(id);
         item.itemValue = value;
         storageItems.Add(item);
     }
@@ -72,7 +72,7 @@ public class StorageInventory : MonoBehaviour
             if (raffle <= inventoryItemList.itemList[randomItemNumber].rarity)
             {
                 int randomValue = Random.Range(1, inventoryItemList.itemList[randomItemNumber].getCopy().maxStack);
-                Item item = inventoryItemList.itemList[randomItemNumber].getCopy();
+                Item2 item = inventoryItemList.itemList[randomItemNumber].getCopy();
                 item.itemValue = randomValue;
                 storageItems.Add(item);
                 creatingItemsForChest++;

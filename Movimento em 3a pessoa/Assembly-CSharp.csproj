@@ -89,7 +89,7 @@
     <Compile Include="Assets\InventoryMaster\Scripts\Item\CreateInputManager.cs" />
     <Compile Include="Assets\InventoryMaster\Scripts\Item\CreateItemDatabase.cs" />
     <Compile Include="Assets\InventoryMaster\Scripts\Item\DragItem.cs" />
-    <Compile Include="Assets\InventoryMaster\Scripts\Item\Item.cs" />
+    <Compile Include="Assets\InventoryMaster\Scripts\Item\Item2.cs" />
     <Compile Include="Assets\InventoryMaster\Scripts\Item\ItemAttribute.cs" />
     <Compile Include="Assets\InventoryMaster\Scripts\Item\ItemAttributeList.cs" />
     <Compile Include="Assets\InventoryMaster\Scripts\Item\ItemDataBaseList.cs" />
@@ -106,6 +106,8 @@
     <Compile Include="Assets\Scripts\EnemyRespawn.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\ItensManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonMovement.cs" />

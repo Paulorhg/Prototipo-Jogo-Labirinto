@@ -33,7 +33,7 @@ public class RandomChestLootSystem : MonoBehaviour
             creatingItemsForChest = 0;
 
             int itemAmountForChest = Random.Range(minItemInChest, maxItemInChest);
-            List<Item> itemsForChest = new List<Item>();
+            List<Item2> itemsForChest = new List<Item2>();
 
             while (creatingItemsForChest < itemAmountForChest)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,6 +9,15 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private float damage;
 
+    private void Start()
+    {
+       // GameObject weapon = Instantiate()
+    }
+
+    public void ChangeWeapon(string name)
+    {
+        
+    }
 
     public float GetDamage()
     {

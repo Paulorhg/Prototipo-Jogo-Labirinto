@@ -62,7 +62,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
     public void createDuplication(GameObject Item)
     {
-        Item item = Item.GetComponent<ItemOnObject>().item;
+        Item2 item = Item.GetComponent<ItemOnObject>().item;
         GameObject duplication = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
         duplication.transform.parent.parent.parent.GetComponent<Inventory>().stackableSettings();
         Item.GetComponent<ConsumeItem>().duplication = duplication;
@@ -85,8 +85,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 GameObject secondItemGameObject = newSlot.parent.gameObject;
                 RectTransform firstItemRectTransform = this.gameObject.GetComponent<RectTransform>();
                 RectTransform secondItemRectTransform = newSlot.parent.GetComponent<RectTransform>();
-                Item firstItem = rectTransform.GetComponent<ItemOnObject>().item;
-                Item secondItem = new Item();
+                Item2 firstItem = rectTransform.GetComponent<ItemOnObject>().item;
+                Item2 secondItem = new Item2();
                 if (newSlot.parent.GetComponent<ItemOnObject>() != null)
                     secondItem = newSlot.parent.GetComponent<ItemOnObject>().item;
 
