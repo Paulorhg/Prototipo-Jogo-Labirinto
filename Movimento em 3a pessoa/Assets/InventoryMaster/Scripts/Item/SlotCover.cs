@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 public class SlotCover : MonoBehaviour
 {
 
-    Inventory inv;
+    Inventory2 inv;
     RectTransform rT;
 
     // Use this for initialization
     void Start()
     {
-        inv = transform.parent.parent.parent.parent.GetComponent<Inventory>();
+        inv = transform.parent.parent.parent.parent.GetComponent<Inventory2>();
         rT = GetComponent<RectTransform>();
 
     }

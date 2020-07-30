@@ -7,7 +7,7 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
 {     //splitting an Item
 
     private bool pressingButtonToSplit;             //bool for pressing a item to split it
-    public Inventory inv;                          //inventory script  
+    public Inventory2 inv;                          //inventory script  
     static InputManager inputManagerDatabase = null;
 
     void Update()
@@ -26,7 +26,7 @@ public class SplitItem : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData data)                    //splitting the item now
     {
-        inv = transform.parent.parent.parent.GetComponent<Inventory>();
+        inv = transform.parent.parent.parent.GetComponent<Inventory2>();
         if (transform.parent.parent.parent.GetComponent<Hotbar>() == null && data.button == PointerEventData.InputButton.Left && pressingButtonToSplit && inv.stackable && (inv.ItemsInInventory.Count < (inv.height * inv.width))) //if you press leftclick and and keycode
         {
             ItemOnObject itemOnObject = GetComponent<ItemOnObject>();                                                   //we take the ItemOnObject script of the item in the slot

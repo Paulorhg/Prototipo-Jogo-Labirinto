@@ -4,10 +4,10 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[CustomEditor(typeof(Inventory))]
+[CustomEditor(typeof(Inventory2))]
 public class InventoryEditor : Editor
 {
-    Inventory inv;
+    Inventory2 inv;
 
     SerializedProperty inventoryHeight;
     SerializedProperty inventoryWidth;
@@ -41,7 +41,7 @@ public class InventoryEditor : Editor
 
     void OnEnable()
     {
-        inv = target as Inventory;
+        inv = target as Inventory2;
         inventoryHeight = serializedObject.FindProperty("height");
         inventoryWidth = serializedObject.FindProperty("width");
         inventorySlotSize = serializedObject.FindProperty("slotSize");

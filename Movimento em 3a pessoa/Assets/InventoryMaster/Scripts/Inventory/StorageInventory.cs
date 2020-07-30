@@ -33,7 +33,7 @@ public class StorageInventory : MonoBehaviour
     public int itemAmount;
 
     Tooltip tooltip;
-    Inventory inv;
+    Inventory2 inv;
 
     GameObject player;
 
@@ -57,7 +57,7 @@ public class StorageInventory : MonoBehaviour
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
         player = GameObject.FindGameObjectWithTag("Player");
-        inv = inventory.GetComponent<Inventory>();
+        inv = inventory.GetComponent<Inventory2>();
         ItemDataBaseList inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 
         int creatingItemsForChest = 1;
@@ -167,13 +167,13 @@ public class StorageInventory : MonoBehaviour
 
     void setListofStorage()
     {
-        Inventory inv = inventory.GetComponent<Inventory>();
+        Inventory2 inv = inventory.GetComponent<Inventory2>();
         storageItems = inv.getItemList();
     }
 
     void addItemsToInventory()
     {
-        Inventory iV = inventory.GetComponent<Inventory>();
+        Inventory2 iV = inventory.GetComponent<Inventory2>();
         for (int i = 0; i < storageItems.Count; i++)
         {
             iV.addItemToInventory(storageItems[i].itemID, storageItems[i].itemValue);

@@ -3,7 +3,7 @@ using System.Collections;
 public class PickUpItem : MonoBehaviour
 {
     public Item2 item;
-    private Inventory _inventory;
+    private Inventory2 _inventory;
     private GameObject _player;
     // Use this for initialization
 
@@ -11,7 +11,7 @@ public class PickUpItem : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         if (_player != null)
-            _inventory = _player.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>();
+            _inventory = _player.GetComponent<PlayerInventory>().inventory.GetComponent<Inventory2>();
     }
 
     // Update is called once per frame

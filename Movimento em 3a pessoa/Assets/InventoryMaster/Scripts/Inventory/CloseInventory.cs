@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 public class CloseInventory : MonoBehaviour, IPointerDownHandler
 {
 
-    Inventory inv;
+    Inventory2 inv;
     void Start()
     {
-        inv = transform.parent.GetComponent<Inventory>();
+        inv = transform.parent.GetComponent<Inventory2>();
 
     }
     public void OnPointerDown(PointerEventData eventData)

@@ -30,7 +30,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         if (this.gameObject.transform.parent.parent.parent.GetComponent<EquipmentSystem>() == null)
         {
             bool gearable = false;
-            Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
+            Inventory2 inventory = transform.parent.parent.parent.GetComponent<Inventory2>();
 
             if (eS != null)
                 itemTypeOfSlot = eS.itemTypeOfSlots;
@@ -40,12 +40,12 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 //item from craft system to inventory
                 if (transform.parent.GetComponent<CraftResultSlot>() != null)
                 {
-                    bool check = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().checkIfItemAllreadyExist(item.itemID, item.itemValue);
+                    bool check = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory2>().checkIfItemAllreadyExist(item.itemID, item.itemValue);
 
                     if (!check)
                     {
-                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
-                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().stackableSettings();
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory2>().addItemToInventory(item.itemID, item.itemValue);
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory2>().stackableSettings();
                     }
                     CraftSystem cS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().craftSystem.GetComponent<CraftSystem>();
                     cS.deleteItems(item);
@@ -53,7 +53,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     result.temp = 0;
                     tooltip.deactivateTooltip();
                     gearable = true;
-                    GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>().updateItemList();
+                    GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory2>().updateItemList();
                 }
                 else
                 {
@@ -73,7 +73,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     
                                     this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
                                     this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                                    eS.gameObject.GetComponent<Inventory>().updateItemList();
+                                    eS.gameObject.GetComponent<Inventory2>().updateItemList();
                                     inventory.updateItemList();
                                     gearable = true;
                                     if (duplication != null)
@@ -127,7 +127,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         gearable = true;                                        
                                         if (duplication != null)
                                             Destroy(duplication.gameObject);
-                                        eS.gameObject.GetComponent<Inventory>().updateItemList();
+                                        eS.gameObject.GetComponent<Inventory2>().updateItemList();
                                         inventory.OnUpdateItemList();
                                         break;
                                     }
@@ -177,7 +177,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
     public void consumeIt()
     {
-        Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
+        Inventory2 inventory = transform.parent.parent.parent.GetComponent<Inventory2>();
 
         bool gearable = false;
 
@@ -204,7 +204,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         stop = true;
                         this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
                         this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                        eS.gameObject.GetComponent<Inventory>().updateItemList();
+                        eS.gameObject.GetComponent<Inventory2>().updateItemList();
                         inventory.updateItemList();
                         inventory.EquiptItem(item);
                         gearable = true;
@@ -258,7 +258,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             gearable = true;
                             if (duplication != null)
                                 Destroy(duplication.gameObject);
-                            eS.gameObject.GetComponent<Inventory>().updateItemList();
+                            eS.gameObject.GetComponent<Inventory2>().updateItemList();
                             inventory.OnUpdateItemList();
                             break;                           
                         }
@@ -304,7 +304,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
     public void createDuplication(GameObject Item)
     {
         Item2 item = Item.GetComponent<ItemOnObject>().item;
-        GameObject dup = mainInventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
+        GameObject dup = mainInventory.GetComponent<Inventory2>().addItemToInventory(item.itemID, item.itemValue);
         Item.GetComponent<ConsumeItem>().duplication = dup;
         dup.GetComponent<ConsumeItem>().duplication = Item;
     }

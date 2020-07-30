@@ -8,10 +8,10 @@ public class PlayerInventory : MonoBehaviour
     public GameObject inventory;
     public GameObject characterSystem;
     public GameObject craftSystem;
-    private Inventory craftSystemInventory;
+    private Inventory2 craftSystemInventory;
     private CraftSystem cS;
-    private Inventory mainInventory;
-    private Inventory characterSystemInventory;
+    private Inventory2 mainInventory;
+    private Inventory2 characterSystemInventory;
     private Tooltip toolTip;
 
     private InputManager inputManagerDatabase;
@@ -37,28 +37,28 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnEnable()
     {
-        Inventory.ItemEquip += OnBackpack;
-        Inventory.UnEquipItem += UnEquipBackpack;
+        Inventory2.ItemEquip += OnBackpack;
+        Inventory2.UnEquipItem += UnEquipBackpack;
 
-        Inventory.ItemEquip += OnGearItem;
-        Inventory.ItemConsumed += OnConsumeItem;
-        Inventory.UnEquipItem += OnUnEquipItem;
+        Inventory2.ItemEquip += OnGearItem;
+        Inventory2.ItemConsumed += OnConsumeItem;
+        Inventory2.UnEquipItem += OnUnEquipItem;
 
-        Inventory.ItemEquip += EquipWeapon;
-        Inventory.UnEquipItem += UnEquipWeapon;
+        Inventory2.ItemEquip += EquipWeapon;
+        Inventory2.UnEquipItem += UnEquipWeapon;
     }
 
     public void OnDisable()
     {
-        Inventory.ItemEquip -= OnBackpack;
-        Inventory.UnEquipItem -= UnEquipBackpack;
+        Inventory2.ItemEquip -= OnBackpack;
+        Inventory2.UnEquipItem -= UnEquipBackpack;
 
-        Inventory.ItemEquip -= OnGearItem;
-        Inventory.ItemConsumed -= OnConsumeItem;
-        Inventory.UnEquipItem -= OnUnEquipItem;
+        Inventory2.ItemEquip -= OnGearItem;
+        Inventory2.ItemConsumed -= OnConsumeItem;
+        Inventory2.UnEquipItem -= OnUnEquipItem;
 
-        Inventory.UnEquipItem -= UnEquipWeapon;
-        Inventory.ItemEquip -= EquipWeapon;
+        Inventory2.UnEquipItem -= UnEquipWeapon;
+        Inventory2.ItemEquip -= EquipWeapon;
     }
 
     void EquipWeapon(Item2 item)
@@ -84,7 +84,7 @@ public class PlayerInventory : MonoBehaviour
             for (int i = 0; i < item.itemAttributes.Count; i++)
             {
                 if (mainInventory == null)
-                    mainInventory = inventory.GetComponent<Inventory>();
+                    mainInventory = inventory.GetComponent<Inventory2>();
                 mainInventory.sortItems();
                 if (item.itemAttributes[i].attributeName == "Slots")
                     changeInventorySize(item.itemAttributes[i].attributeValue);
@@ -103,7 +103,7 @@ public class PlayerInventory : MonoBehaviour
         dropTheRestItems(size);
 
         if (mainInventory == null)
-            mainInventory = inventory.GetComponent<Inventory>();
+            mainInventory = inventory.GetComponent<Inventory2>();
         if (size == 3)
         {
             mainInventory.width = 3;
@@ -179,11 +179,11 @@ public class PlayerInventory : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Tooltip") != null)
             toolTip = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<Tooltip>();
         if (inventory != null)
-            mainInventory = inventory.GetComponent<Inventory>();
+            mainInventory = inventory.GetComponent<Inventory2>();
         if (characterSystem != null)
-            characterSystemInventory = characterSystem.GetComponent<Inventory>();
+            characterSystemInventory = characterSystem.GetComponent<Inventory2>();
         if (craftSystem != null)
-            craftSystemInventory = craftSystem.GetComponent<Inventory>();
+            craftSystemInventory = craftSystem.GetComponent<Inventory2>();
     }
 
     //void UpdateHPBar()

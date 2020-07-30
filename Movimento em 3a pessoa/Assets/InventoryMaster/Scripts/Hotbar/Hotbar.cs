@@ -31,7 +31,7 @@ public class Hotbar : MonoBehaviour
             GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
             Instantiate(Resources.Load("Prefabs/EventSystem") as GameObject);
             draggingItem.transform.SetParent(Canvas.transform, true);
-            Inventory inv = panel.AddComponent<Inventory>();
+            Inventory2 inv = panel.AddComponent<Inventory2>();
             panel.AddComponent<InventoryDesign>();
             panel.AddComponent<Hotbar>();
             inv.getPrefabs();
@@ -41,7 +41,7 @@ public class Hotbar : MonoBehaviour
             GameObject panel = (GameObject)Instantiate(Resources.Load("Prefabs/Panel - Hotbar") as GameObject);
             panel.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
             panel.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-            Inventory inv = panel.AddComponent<Inventory>();
+            Inventory2 inv = panel.AddComponent<Inventory2>();
             panel.AddComponent<Hotbar>();
             DestroyImmediate(GameObject.FindGameObjectWithTag("DraggingItem"));
             GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
@@ -72,7 +72,7 @@ public class Hotbar : MonoBehaviour
 
     public int getSlotsInTotal()
     {
-        Inventory inv = GetComponent<Inventory>();
+        Inventory2 inv = GetComponent<Inventory2>();
         return slotsInTotal = inv.width * inv.height;
     }
 }

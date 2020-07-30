@@ -23,7 +23,7 @@ public class EquipmentSystem : MonoBehaviour
 
     public void getSlotsInTotal()
     {
-        Inventory inv = GetComponent<Inventory>();
+        Inventory2 inv = GetComponent<Inventory2>();
         slotsInTotal = inv.width * inv.height;
     }
 #if UNITY_EDITOR
@@ -43,7 +43,7 @@ public class EquipmentSystem : MonoBehaviour
             GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
             draggingItem.transform.SetParent(Canvas.transform, true);
             Instantiate(Resources.Load("Prefabs/EventSystem") as GameObject);
-            Inventory inv = panel.AddComponent<Inventory>();
+            Inventory2 inv = panel.AddComponent<Inventory2>();
             panel.AddComponent<InventoryDesign>();
             panel.AddComponent<EquipmentSystem>();
             inv.getPrefabs();
@@ -53,7 +53,7 @@ public class EquipmentSystem : MonoBehaviour
             GameObject panel = (GameObject)Instantiate(Resources.Load("Prefabs/Panel - EquipmentSystem") as GameObject);
             panel.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
             panel.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-            Inventory inv = panel.AddComponent<Inventory>();
+            Inventory2 inv = panel.AddComponent<Inventory2>();
             panel.AddComponent<EquipmentSystem>();
             DestroyImmediate(GameObject.FindGameObjectWithTag("DraggingItem"));
             GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
