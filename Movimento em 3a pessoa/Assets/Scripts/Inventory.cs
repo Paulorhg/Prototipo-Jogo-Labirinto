@@ -7,6 +7,11 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject inventory;
     private bool inventoryEnable;
+    [SerializeField]
+    private GameObject character;
+    private bool characterEnable;
+
+
     private GameObject[] slots;
     private int allSlots;
 
@@ -36,15 +41,30 @@ public class Inventory : MonoBehaviour
             if (inventoryEnable == true)
             {
                 inventory.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 inventory.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-
             }
         }
-            
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            characterEnable = !characterEnable;
+
+            if (characterEnable == true)
+            {
+                character.SetActive(true);
+            }
+            else
+            {
+                character.SetActive(false);
+            }
+        }
+
+        if(inventoryEnable == true || characterEnable == true)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
 }
