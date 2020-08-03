@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
 
     [SerializeField]
     private string type;
-    public GameObject Item
+    GameObject Item
     {
         get
         {
@@ -23,20 +23,69 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+
+        ItemIcon itemIcon = eventData.pointerDrag.GetComponent<ItemIcon>();
+
         if (type.Equals("Slot"))
         {
             if(Item == null)
             {
-                eventData.pointerDrag.GetComponent<ItemIcon>().changeParent(transform);
+                itemIcon.changeParent(transform);
             }
             else
             {
-
+                Transform otherParent = itemIcon.GetParentToReturn();
+                Item.transform.parent = otherParent;
+                itemIcon.changeParent(transform);
             }
         }
-        if (eventData.pointerDrag.CompareTag("Slot"))
+        if (type.Equals("Weapon"))
         {
-
+            if (itemIcon.item.type.Equals("Weapon"))
+            {
+                if (Item == null)
+                {
+                    itemIcon.changeParent(transform);
+                }
+                else
+                {
+                    Transform otherParent = itemIcon.GetParentToReturn();
+                    Item.transform.parent = otherParent;
+                    itemIcon.changeParent(transform);
+                }
+            }
+        }
+        if (type.Equals("Armor"))
+        {
+            if (itemIcon.item.type.Equals("Armor"))
+            {
+                if (Item == null)
+                {
+                    itemIcon.changeParent(transform);
+                }
+                else
+                {
+                    Transform otherParent = itemIcon.GetParentToReturn();
+                    Item.transform.parent = otherParent;
+                    itemIcon.changeParent(transform);
+                }
+            }
+        }
+        if (type.Equals("Shield"))
+        {
+            if (itemIcon.item.type.Equals("Shield"))
+            {
+                if (Item == null)
+                {
+                    itemIcon.changeParent(transform);
+                }
+                else
+                {
+                    Transform otherParent = itemIcon.GetParentToReturn();
+                    Item.transform.parent = otherParent;
+                    itemIcon.changeParent(transform);
+                }
+            }
         }
     }
 }

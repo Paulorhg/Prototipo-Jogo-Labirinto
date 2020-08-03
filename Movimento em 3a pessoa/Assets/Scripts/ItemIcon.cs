@@ -6,11 +6,19 @@ using UnityEngine.EventSystems;
 public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
+    public Item item;
     Transform parentToReturn;
+    GameObject canvas;
+
+
+    private void Start()
+    {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentToReturn = transform.parent;
-        transform.SetParent(transform.parent.parent);
+        transform.SetParent(canvas.transform);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
@@ -29,5 +37,10 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void changeParent(Transform newParent)
     {
         parentToReturn = newParent;
+    }
+
+    public Transform GetParentToReturn()
+    {
+        return parentToReturn;
     }
 }
