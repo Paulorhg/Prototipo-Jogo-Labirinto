@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -9,7 +10,6 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Item item;
     Transform parentToReturn;
     GameObject canvas;
-
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         transform.SetParent(parentToReturn);
     }
 
-    public void changeParent(Transform newParent)
+    public void ChangeParent(Transform newParent)
     {
         parentToReturn = newParent;
     }
@@ -42,5 +42,11 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Transform GetParentToReturn()
     {
         return parentToReturn;
+    }
+
+    public void Inicializado(Item item)
+    {
+        this.item = item;
+        gameObject.GetComponent<Image>().sprite = item.sprite;
     }
 }

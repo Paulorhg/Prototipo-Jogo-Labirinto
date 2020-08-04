@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Weapon"))
+        if (other.gameObject.CompareTag("Weapon"))
         {
             if(!_hit)
             {

@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag.Equals("Enemy"))
+        if(other.gameObject.CompareTag("Enemy"))
         {
             Shield shieldScr = shield.GetComponent<Shield>();
             if (shieldScr.GetDefended())

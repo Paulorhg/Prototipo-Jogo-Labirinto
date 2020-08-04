@@ -9,15 +9,11 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private float damage;
 
-    private void Start()
-    {
-       // GameObject weapon = Instantiate()
-    }
 
-    public void ChangeWeapon(string name)
-    {
+    //public void ChangeWeapon(string name)
+    //{
         
-    }
+    //}
 
     public float GetDamage()
     {

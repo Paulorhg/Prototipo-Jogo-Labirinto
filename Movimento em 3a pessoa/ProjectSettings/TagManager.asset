@@ -15,8 +15,8 @@ TagManager:
   - Slot
   - Item
   - ItemIcon
-  - MainInventory
   - EquipmentSystem
+  - Inventory
   layers:
   - Default
   - TransparentFX

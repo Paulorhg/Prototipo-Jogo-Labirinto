@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
 
     [SerializeField]
     private string type;
-    GameObject Item
+    public GameObject Item
     {
         get
         {
@@ -30,13 +30,13 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             if(Item == null)
             {
-                itemIcon.changeParent(transform);
+                itemIcon.ChangeParent(transform);
             }
             else
             {
                 Transform otherParent = itemIcon.GetParentToReturn();
                 Item.transform.parent = otherParent;
-                itemIcon.changeParent(transform);
+                itemIcon.ChangeParent(transform);
             }
         }
         if (type.Equals("Weapon"))
@@ -45,13 +45,13 @@ public class Slot : MonoBehaviour, IDropHandler
             {
                 if (Item == null)
                 {
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
                 else
                 {
                     Transform otherParent = itemIcon.GetParentToReturn();
                     Item.transform.parent = otherParent;
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
             }
         }
@@ -61,13 +61,13 @@ public class Slot : MonoBehaviour, IDropHandler
             {
                 if (Item == null)
                 {
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
                 else
                 {
                     Transform otherParent = itemIcon.GetParentToReturn();
                     Item.transform.parent = otherParent;
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
             }
         }
@@ -77,15 +77,16 @@ public class Slot : MonoBehaviour, IDropHandler
             {
                 if (Item == null)
                 {
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
                 else
                 {
                     Transform otherParent = itemIcon.GetParentToReturn();
                     Item.transform.parent = otherParent;
-                    itemIcon.changeParent(transform);
+                    itemIcon.ChangeParent(transform);
                 }
             }
         }
     }
+
 }

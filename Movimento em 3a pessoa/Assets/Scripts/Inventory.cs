@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private GameObject slotHolder;
+
+    [SerializeField]
+    private GameObject itemIconPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -66,5 +70,20 @@ public class Inventory : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
+    }
+
+
+    public void PegarItem(Item item)
+    {
+        for(int i = 0; i < allSlots; i++)
+        {
+            if(slots[i].gameObject.GetComponent<Slot>().Item == null)
+            {
+                item.gameObject.SetActive(false);
+                GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].gameObject.transform);
+                itemIcon.GetComponent<ItemIcon>().Inicializado(item);
+                break;
+            }
+        }
     }
 }
