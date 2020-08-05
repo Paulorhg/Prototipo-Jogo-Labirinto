@@ -97,7 +97,9 @@ MonoBehaviour:
   id: 0
   type: Weapon
   value: 15
-  sprite: {fileID: 0}
+  prefab: {fileID: 1574425926255911989}
+  sprite: {fileID: 21300000, guid: 439486a4aa566984eba71b527d0ceaf7, type: 3}
+  pickedUp: 0
 --- !u!136 &222751264086770854
 CapsuleCollider:
   m_ObjectHideFlags: 0

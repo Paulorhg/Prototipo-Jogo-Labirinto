@@ -274,7 +274,9 @@ MonoBehaviour:
   id: 0
   type: Shield
   value: 10
-  sprite: {fileID: 0}
+  prefab: {fileID: 7290717075640619553}
+  sprite: {fileID: 21300000, guid: 604c66dfb09d43f419b917451bbebcf6, type: 3}
+  pickedUp: 0
 --- !u!136 &6343907105159149002
 CapsuleCollider:
   m_ObjectHideFlags: 0

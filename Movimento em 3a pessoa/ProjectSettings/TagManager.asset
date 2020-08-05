@@ -11,12 +11,11 @@ TagManager:
   - Canvas
   - Panel
   - Slots
-  - DraggingItem
   - Slot
   - Item
   - ItemIcon
-  - EquipmentSystem
   - Inventory
+  - ItensManager
   layers:
   - Default
   - TransparentFX

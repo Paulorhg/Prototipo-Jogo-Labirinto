@@ -8,6 +8,8 @@ public class Slot : MonoBehaviour, IDropHandler
 
     [SerializeField]
     private string type;
+
+    private ItensManager ItensManager;
     public GameObject Item
     {
         get
@@ -19,6 +21,11 @@ public class Slot : MonoBehaviour, IDropHandler
 
             return null;
         }
+    }
+
+    private void Start()
+    {
+        ItensManager = GameObject.FindGameObjectWithTag("ItensManager").GetComponent<ItensManager>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -53,6 +60,7 @@ public class Slot : MonoBehaviour, IDropHandler
                     Item.transform.parent = otherParent;
                     itemIcon.ChangeParent(transform);
                 }
+                ItensManager.ChangeWeapon(itemIcon.item.id);
             }
         }
         if (type.Equals("Armor"))
@@ -85,6 +93,7 @@ public class Slot : MonoBehaviour, IDropHandler
                     Item.transform.parent = otherParent;
                     itemIcon.ChangeParent(transform);
                 }
+                ItensManager.ChangeShield(itemIcon.item.id);
             }
         }
     }

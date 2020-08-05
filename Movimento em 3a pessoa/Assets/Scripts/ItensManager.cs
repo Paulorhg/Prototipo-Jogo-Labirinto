@@ -5,12 +5,18 @@ using UnityEngine;
 public class ItensManager : MonoBehaviour
 {
 
-    [SerializeField]
-    Item[] weapons = new Item[5];
-    [SerializeField]
-    Item[] shields = new Item[5];
-    [SerializeField]
-    Item[] potions = new Item[5];
+    //[SerializeField]
+    //Item[] weapons = new Item[5];
+    //[SerializeField]
+    //Item[] shields = new Item[5];
+    //[SerializeField]
+    //Item[] armor = new Item[5];
+    //[SerializeField]
+    //Item[] potions = new Item[5];
+
+    Item weaponEquipped;
+    Item shieldEquipped;
+    Item armorEquipped;
 
     //private int itensCount = 0;
     //Dictionary<int, Item> itensEmJogo = new Dictionary<int, Item>();
@@ -59,15 +65,42 @@ public class ItensManager : MonoBehaviour
     //}
 
 
-    void ChangeWeapon(int newId)
+    public void ChangeWeapon(int newId)
     {
-        for(int i = 0; i < weapons.Length; i++)
+
+        for(int i = 0; i < weaponArm.transform.childCount; i++)
         {
-            if(weapons[i].id == newId)
+            if(weaponArm.transform.GetChild(i).GetComponent<Item>().id == newId)
             {
-                Destroy(weaponArm.transform.GetChild(0).gameObject);
-                Instantiate(weapons[i].gameObject, weaponArm.transform);
-                return;
+                
+                if(weaponEquipped != null)
+                {
+                    weaponEquipped.gameObject.SetActive(false);
+                }
+                weaponEquipped = weaponArm.transform.GetChild(i).GetComponent<Item>();
+                weaponEquipped.transform.parent = weaponArm.transform;
+                weaponEquipped.gameObject.SetActive(true);
+
+            }
+        }
+    }
+
+    public void ChangeShield(int newId)
+    {
+
+        for (int i = 0; i < shieldArm.transform.childCount; i++)
+        {
+            if (shieldArm.transform.GetChild(i).GetComponent<Item>().id == newId)
+            {
+
+                if (shieldEquipped != null)
+                {
+                    shieldEquipped.gameObject.SetActive(false);
+                }
+                shieldEquipped = shieldArm.transform.GetChild(i).GetComponent<Item>();
+                shieldEquipped.transform.parent = shieldArm.transform;
+                shieldEquipped.gameObject.SetActive(true);
+
             }
         }
     }

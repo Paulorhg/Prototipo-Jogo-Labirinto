@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
     //public int allItensId;
     public string type;
     public int value;
+    public GameObject prefab;
     public Sprite sprite;
     
     
@@ -24,10 +25,7 @@ public class Item : MonoBehaviour
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-        if(inventory == null)
-        {
-            Debug.Log("Não achou o inventory");
-        }
+       
         collider = gameObject.GetComponent<CapsuleCollider>();
     }
 
@@ -40,14 +38,15 @@ public class Item : MonoBehaviour
         else
         {
             collider.enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            near = false;
         }
 
         if(near)
         {
            if (Input.GetKeyDown(KeyCode.E))
-           {
+           {    
                 inventory.GetComponent<Inventory>().PegarItem(this);
-                pickedUp = true;
            }
         }
         
