@@ -99,6 +99,7 @@ MonoBehaviour:
   value: 50
   prefab: {fileID: 4897845984797167882}
   sprite: {fileID: 21300000, guid: f1de9e836c79fde4aab8a740ec51eb32, type: 3}
+  typePotion: Mana
   pickedUp: 0
 --- !u!136 &7053259531606532630
 CapsuleCollider:

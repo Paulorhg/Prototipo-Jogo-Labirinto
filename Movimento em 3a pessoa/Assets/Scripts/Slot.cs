@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
 
     [SerializeField]
     private string type;
+    
 
     private ItensManager ItensManager;
     public GameObject Item
@@ -35,20 +36,79 @@ public class Slot : MonoBehaviour, IDropHandler
 
         if (type.Equals("Slot"))
         {
+
+            string typeSlotAnterior = itemIcon.GetParentToReturn().gameObject.GetComponent<Slot>().type;
+
+            //se colocar em um slot do inventario vazio
             if(Item == null)
             {
+                //se tirar o item de algum slot do character
+                if (typeSlotAnterior.Equals("Weapon") )
+                {
+                    ItensManager.ChangeWeapon(404);
+                }
+                else if (typeSlotAnterior.Equals("Shield"))
+                {
+                    ItensManager.ChangeShield(404);
+                }
+                else if (typeSlotAnterior.Equals("Armor"))
+                {
+                    return;
+                }
+
                 itemIcon.ChangeParent(transform);
             }
+
+            //se colocar em um slot do inventario com outro item
             else
             {
+                ItemIcon itemNoSlot = transform.GetChild(0).GetComponent<ItemIcon>();
+
+                if (itemIcon.itemType.Equals("Potion") && itemNoSlot.itemType.Equals("Potion"))
+                {
+                    if (itemIcon.potionType.Equals(itemNoSlot.potionType))
+                    {
+                        itemNoSlot.amount += itemIcon.amount;
+                        Destroy(itemIcon.gameObject);
+                        return;
+                    }
+                }
+                
+                //se tirar o item de algum slot do character
+                else if (typeSlotAnterior.Equals("Weapon"))
+                {
+                    if (itemNoSlot.itemType.Equals("Weapon"))
+                        ItensManager.ChangeWeapon(itemNoSlot.itemId);
+                    else
+                        return;
+                }
+                else if (typeSlotAnterior.Equals("Shield"))
+                {
+                    if (itemNoSlot.itemType.Equals("Shield"))
+                        ItensManager.ChangeShield(itemNoSlot.itemId);
+                    else
+                        return;
+                }
+                else if (typeSlotAnterior.Equals("Armor"))
+                {
+                    if (itemNoSlot.itemType.Equals("Armor"))
+                        ItensManager.ChangeArmor(itemNoSlot.itemId);
+                    else
+                        return;
+                }
+
+
                 Transform otherParent = itemIcon.GetParentToReturn();
                 Item.transform.parent = otherParent;
                 itemIcon.ChangeParent(transform);
             }
         }
+
+        /////////////////////////////////////////////////////////////////////////////
+        
         if (type.Equals("Weapon"))
         {
-            if (itemIcon.item.type.Equals("Weapon"))
+            if (itemIcon.itemType.Equals("Weapon"))
             {
                 if (Item == null)
                 {
@@ -60,12 +120,12 @@ public class Slot : MonoBehaviour, IDropHandler
                     Item.transform.parent = otherParent;
                     itemIcon.ChangeParent(transform);
                 }
-                ItensManager.ChangeWeapon(itemIcon.item.id);
+                ItensManager.ChangeWeapon(itemIcon.itemId);
             }
         }
         if (type.Equals("Armor"))
         {
-            if (itemIcon.item.type.Equals("Armor"))
+            if (itemIcon.itemType.Equals("Armor"))
             {
                 if (Item == null)
                 {
@@ -77,11 +137,15 @@ public class Slot : MonoBehaviour, IDropHandler
                     Item.transform.parent = otherParent;
                     itemIcon.ChangeParent(transform);
                 }
+                ItensManager.ChangeArmor(itemIcon.itemId);
             }
         }
+
+        /////////////////////////////////////////////////////////////////////
+        
         if (type.Equals("Shield"))
         {
-            if (itemIcon.item.type.Equals("Shield"))
+            if (itemIcon.itemType.Equals("Shield"))
             {
                 if (Item == null)
                 {
@@ -93,7 +157,37 @@ public class Slot : MonoBehaviour, IDropHandler
                     Item.transform.parent = otherParent;
                     itemIcon.ChangeParent(transform);
                 }
-                ItensManager.ChangeShield(itemIcon.item.id);
+                ItensManager.ChangeShield(itemIcon.itemId);
+            }
+        }
+
+        /////////////////////////////////////////////////////////////////////
+
+        if (type.Equals("Potion"))
+        {
+            if (itemIcon.itemType.Equals("Potion"))
+            {
+                if (Item == null)
+                {
+                    itemIcon.ChangeParent(transform);
+                }
+                else
+                {
+                    ItemIcon itemNoSlot = transform.GetChild(0).GetComponent<ItemIcon>();
+
+                    if (itemIcon.potionType.Equals(itemNoSlot.potionType))
+                    {
+                        itemNoSlot.amount += itemIcon.amount;
+                        Destroy(itemIcon.gameObject);
+                    }
+                    else
+                    {
+                        Transform otherParent = itemIcon.GetParentToReturn();
+                        Item.transform.parent = otherParent;
+                        itemIcon.ChangeParent(transform);
+                    }
+                    
+                }
             }
         }
     }

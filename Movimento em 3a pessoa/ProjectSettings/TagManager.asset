@@ -16,6 +16,7 @@ TagManager:
   - ItemIcon
   - Inventory
   - ItensManager
+  - Armor
   layers:
   - Default
   - TransparentFX

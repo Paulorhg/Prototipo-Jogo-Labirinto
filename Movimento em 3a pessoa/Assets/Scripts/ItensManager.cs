@@ -14,9 +14,9 @@ public class ItensManager : MonoBehaviour
     //[SerializeField]
     //Item[] potions = new Item[5];
 
-    Item weaponEquipped;
-    Item shieldEquipped;
-    Item armorEquipped;
+    GameObject weaponEquipped;
+    GameObject shieldEquipped;
+    GameObject armorEquipped;
 
     //private int itensCount = 0;
     //Dictionary<int, Item> itensEmJogo = new Dictionary<int, Item>();
@@ -24,6 +24,7 @@ public class ItensManager : MonoBehaviour
 
     GameObject weaponArm;
     GameObject shieldArm;
+    GameObject chest;
 
 
 
@@ -32,6 +33,7 @@ public class ItensManager : MonoBehaviour
     {
         weaponArm = GameObject.FindGameObjectWithTag("Weapon");
         shieldArm = GameObject.FindGameObjectWithTag("Shield");
+        chest = GameObject.FindGameObjectWithTag("Armor");
 
         //if (weaponArm.transform.childCount == 0)
         //{
@@ -67,6 +69,14 @@ public class ItensManager : MonoBehaviour
 
     public void ChangeWeapon(int newId)
     {
+        if(newId == 404)
+        {
+            if (weaponEquipped != null)
+            {
+                weaponEquipped.SetActive(false);
+            }
+            weaponEquipped = null;
+        }
 
         for(int i = 0; i < weaponArm.transform.childCount; i++)
         {
@@ -75,18 +85,25 @@ public class ItensManager : MonoBehaviour
                 
                 if(weaponEquipped != null)
                 {
-                    weaponEquipped.gameObject.SetActive(false);
+                    weaponEquipped.SetActive(false);
                 }
-                weaponEquipped = weaponArm.transform.GetChild(i).GetComponent<Item>();
-                weaponEquipped.transform.parent = weaponArm.transform;
-                weaponEquipped.gameObject.SetActive(true);
-
+                weaponEquipped = weaponArm.transform.GetChild(i).gameObject;
+                weaponEquipped.SetActive(true);
+                break;
             }
         }
     }
 
     public void ChangeShield(int newId)
     {
+        if (newId == 404)
+        {
+            if (shieldEquipped != null)
+            {
+                shieldEquipped.SetActive(false);
+            }
+            shieldEquipped = null;
+        }
 
         for (int i = 0; i < shieldArm.transform.childCount; i++)
         {
@@ -95,12 +112,38 @@ public class ItensManager : MonoBehaviour
 
                 if (shieldEquipped != null)
                 {
-                    shieldEquipped.gameObject.SetActive(false);
+                    shieldEquipped.SetActive(false);
                 }
-                shieldEquipped = shieldArm.transform.GetChild(i).GetComponent<Item>();
-                shieldEquipped.transform.parent = shieldArm.transform;
-                shieldEquipped.gameObject.SetActive(true);
+                shieldEquipped = shieldArm.transform.GetChild(i).gameObject;
+                shieldEquipped.SetActive(true);
+                break;
+            }
+        }
+    }
 
+    public void ChangeArmor(int newId)
+    {
+        if (newId == 404)
+        {
+            if (armorEquipped != null)
+            {
+                armorEquipped.SetActive(false);
+            }
+            armorEquipped = null;
+        }
+
+        for (int i = 0; i < chest.transform.childCount; i++)
+        {
+            if (chest.transform.GetChild(i).GetComponent<Item>().id == newId)
+            {
+
+                if (armorEquipped != null)
+                {
+                    armorEquipped.SetActive(false);
+                }
+                armorEquipped = chest.transform.GetChild(i).gameObject;
+                armorEquipped.SetActive(true);
+                break;
             }
         }
     }

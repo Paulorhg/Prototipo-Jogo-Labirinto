@@ -13,6 +13,8 @@ public class Item : MonoBehaviour
     public int value;
     public GameObject prefab;
     public Sprite sprite;
+    //Se o item for potion colocar se é de vida ou de mana
+    public string typePotion;
     
     
     public bool pickedUp;

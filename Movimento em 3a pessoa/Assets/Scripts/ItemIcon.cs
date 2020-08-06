@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
-    public Item item;
+    public int itemId;
+    public string itemType;
+    public int amount = 0;
+    public string potionType;
+
     Transform parentToReturn;
     GameObject canvas;
 
@@ -46,7 +50,30 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void Inicializado(Item item)
     {
-        this.item = item;
+        itemId = item.id;
+        itemType = item.type;
         gameObject.GetComponent<Image>().sprite = item.sprite;
+
+        if (item.type.Equals("Potion"))
+        {
+            potionType = item.typePotion;
+            amount++;
+            GameObject amountDisplay = transform.GetChild(0).gameObject;
+            amountDisplay.GetComponent<Text>().text = "" + amount;
+            amountDisplay.SetActive(true);
+        }
+    }
+
+    public void PotionUsed()
+    {
+        amount--;
+
+        if(amount == 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = "" + amount;
+
     }
 }

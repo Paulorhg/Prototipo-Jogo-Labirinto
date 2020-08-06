@@ -66,7 +66,17 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(inventoryEnable == true || characterEnable == true)
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            
+        }
+
+        if (inventoryEnable == true || characterEnable == true)
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
@@ -80,44 +90,43 @@ public class Inventory : MonoBehaviour
         {
             if(slots[i].gameObject.GetComponent<Slot>().Item == null)
             {
-                if (item.type.Equals("Weapon"))
-                {
-                    Transform weaponArm = GameObject.FindGameObjectWithTag("Weapon").transform;
-                    for(int j = 0; j < weaponArm.childCount; j++)
-                    {
-                        if(weaponArm.GetChild(j).GetComponent<Item>().id == item.id)
-                        {
-                            item.pickedUp = true;
-                            item.transform.SetParent(weaponArm);
-                            item.gameObject.transform.localPosition = new Vector3(0, 0, 0);
-                            item.gameObject.transform.rotation = item.prefab.transform.rotation;
-                        }
-                    }
+                //if (item.type.Equals("Weapon"))
+                //{
+                //    Transform weaponArm = GameObject.FindGameObjectWithTag("Weapon").transform;
+                //    for(int j = 0; j < weaponArm.childCount; j++)
+                //    {
+                //        if(weaponArm.GetChild(j).GetComponent<Item>().id == item.id)
+                //        {
+                //            item.pickedUp = true;
+                //            item.transform.SetParent(weaponArm);
+                //            item.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+                //            item.gameObject.transform.rotation = item.prefab.transform.rotation;
+                //        }
+                //    }
                     
-                }
-                else if(item.type.Equals("Shield"))
-                {
-                    Transform shieldArm = GameObject.FindGameObjectWithTag("Shield").transform;
-                    item.pickedUp = true;
-                    item.transform.SetParent(shieldArm);
-                    item.transform.localPosition = new Vector3(0, 0, 0);
-                    item.transform.rotation = item.prefab.transform.rotation;
-                }
-                else if (item.type.Equals("Armor"))
-                {
-                    Transform chest = GameObject.FindGameObjectWithTag("Chest").transform;
-                    item.pickedUp = true;
-                    item.transform.SetParent(chest);
-                    item.transform.localPosition = new Vector3(0, 0, 0);
-                    item.transform.rotation = item.prefab.transform.rotation;
-                }
+                //}
+                //else if(item.type.Equals("Shield"))
+                //{
+                //    Transform shieldArm = GameObject.FindGameObjectWithTag("Shield").transform;
+                //    item.pickedUp = true;
+                //    item.transform.SetParent(shieldArm);
+                //    item.transform.localPosition = new Vector3(0, 0, 0);
+                //    item.transform.rotation = item.prefab.transform.rotation;
+                //}
+                //else if (item.type.Equals("Armor"))
+                //{
+                //    Transform chest = GameObject.FindGameObjectWithTag("Chest").transform;
+                //    item.pickedUp = true;
+                //    item.transform.SetParent(chest);
+                //    item.transform.localPosition = new Vector3(0, 0, 0);
+                //    item.transform.rotation = item.prefab.transform.rotation;
+                //}
 
-                item.gameObject.SetActive(false);
                 GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].transform);
                 itemIcon.GetComponent<ItemIcon>().Inicializado(item);
+                Destroy(item.gameObject);
                 break;
 
-                
             }
         }
     }
