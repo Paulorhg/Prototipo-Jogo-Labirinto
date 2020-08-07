@@ -9,7 +9,7 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             defended = true;
         }

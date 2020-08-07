@@ -15,22 +15,22 @@ public class HealthBar : MonoBehaviour
         health = maxHealth;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TakeDamage(20);
-        }
-    }
 
     public void TakeDamage(float damage)
     {
-        if(health > 0)
-        {
-            health -= damage;
+        health -= damage;
 
-            healthBar.fillAmount = health / maxHealth;
-        }
+        healthBar.fillAmount = health / maxHealth;
+    }
+
+    public void RestoreHealth(float restore)
+    {
+        health += restore;
+
+        if (health > maxHealth)
+            health = maxHealth;
+
+        healthBar.fillAmount = health / maxHealth;
     }
 
     public float GetHealth()

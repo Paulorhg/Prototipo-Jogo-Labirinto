@@ -45,10 +45,13 @@ public class Inventory : MonoBehaviour
             if (inventoryEnable == true)
             {
                 inventory.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 inventory.SetActive(false);
+                if(characterEnable == false)
+                    Cursor.lockState = CursorLockMode.Locked;
             }
         }
 
@@ -59,75 +62,89 @@ public class Inventory : MonoBehaviour
             if (characterEnable == true)
             {
                 character.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 character.SetActive(false);
+                if (inventoryEnable == false)
+                    Cursor.lockState = CursorLockMode.Locked;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
             
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            
-        }
-
-        if (inventoryEnable == true || characterEnable == true)
-            Cursor.lockState = CursorLockMode.None;
-        else
-            Cursor.lockState = CursorLockMode.Locked;
     }
 
 
     public void PegarItem(Item item)
     {
-
-        for (int i = 0; i < allSlots; i++)
+        
+        if (item.type.Equals("Potion"))
         {
-            if(slots[i].gameObject.GetComponent<Slot>().Item == null)
+            for (int i = 0; i < allSlots; i++)
             {
-                //if (item.type.Equals("Weapon"))
-                //{
-                //    Transform weaponArm = GameObject.FindGameObjectWithTag("Weapon").transform;
-                //    for(int j = 0; j < weaponArm.childCount; j++)
-                //    {
-                //        if(weaponArm.GetChild(j).GetComponent<Item>().id == item.id)
-                //        {
-                //            item.pickedUp = true;
-                //            item.transform.SetParent(weaponArm);
-                //            item.gameObject.transform.localPosition = new Vector3(0, 0, 0);
-                //            item.gameObject.transform.rotation = item.prefab.transform.rotation;
-                //        }
-                //    }
-                    
-                //}
-                //else if(item.type.Equals("Shield"))
-                //{
-                //    Transform shieldArm = GameObject.FindGameObjectWithTag("Shield").transform;
-                //    item.pickedUp = true;
-                //    item.transform.SetParent(shieldArm);
-                //    item.transform.localPosition = new Vector3(0, 0, 0);
-                //    item.transform.rotation = item.prefab.transform.rotation;
-                //}
-                //else if (item.type.Equals("Armor"))
-                //{
-                //    Transform chest = GameObject.FindGameObjectWithTag("Chest").transform;
-                //    item.pickedUp = true;
-                //    item.transform.SetParent(chest);
-                //    item.transform.localPosition = new Vector3(0, 0, 0);
-                //    item.transform.rotation = item.prefab.transform.rotation;
-                //}
 
-                GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].transform);
-                itemIcon.GetComponent<ItemIcon>().Inicializado(item);
-                Destroy(item.gameObject);
-                break;
+                if (slots[i].transform.childCount == 0)
+                {
+                    GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].transform);
+                    itemIcon.GetComponent<ItemIcon>().Inicializado(item);
+                    Destroy(item.gameObject);
+                    break;
+                }
 
+                if (slots[i].transform.GetChild(0).GetComponent<ItemIcon>().potionType == item.typePotion)
+                {
+                    slots[i].transform.GetChild(0).GetComponent<ItemIcon>().JuntarPotion(1);
+                    Destroy(item.gameObject);
+                    break;
+                }
             }
+        }
+        else
+        {
+            for (int i = 0; i < allSlots; i++)
+            {
+                if (slots[i].transform.childCount == 0)
+                {
+                    //if (item.type.Equals("Weapon"))
+                    //{
+                    //    Transform weaponArm = GameObject.FindGameObjectWithTag("Weapon").transform;
+                    //    for(int j = 0; j < weaponArm.childCount; j++)
+                    //    {
+                    //        if(weaponArm.GetChild(j).GetComponent<Item>().id == item.id)
+                    //        {
+                    //            item.pickedUp = true;
+                    //            item.transform.SetParent(weaponArm);
+                    //            item.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+                    //            item.gameObject.transform.rotation = item.prefab.transform.rotation;
+                    //        }
+                    //    }
+
+                    //}
+                    //else if(item.type.Equals("Shield"))
+                    //{
+                    //    Transform shieldArm = GameObject.FindGameObjectWithTag("Shield").transform;
+                    //    item.pickedUp = true;
+                    //    item.transform.SetParent(shieldArm);
+                    //    item.transform.localPosition = new Vector3(0, 0, 0);
+                    //    item.transform.rotation = item.prefab.transform.rotation;
+                    //}
+                    //else if (item.type.Equals("Armor"))
+                    //{
+                    //    Transform chest = GameObject.FindGameObjectWithTag("Chest").transform;
+                    //    item.pickedUp = true;
+                    //    item.transform.SetParent(chest);
+                    //    item.transform.localPosition = new Vector3(0, 0, 0);
+                    //    item.transform.rotation = item.prefab.transform.rotation;
+                    //}
+
+                    GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].transform);
+                    itemIcon.GetComponent<ItemIcon>().Inicializado(item);
+                    Destroy(item.gameObject);
+                    break;
+
+                }
+            }
+        
         }
     }
 }

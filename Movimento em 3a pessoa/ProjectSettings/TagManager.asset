@@ -17,6 +17,8 @@ TagManager:
   - Inventory
   - ItensManager
   - Armor
+  - DestroyMenu
+  - InventoryElement
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float damage;
-   
+    public float weaponDamage;
+    public float armor;
 
 
     // Start is called before the first frame update
@@ -66,7 +67,15 @@ public class Player : MonoBehaviour
             else
             {
                 Debug.Log("inimigo bateu");
-                health.TakeDamage(other.gameObject.GetComponent<Enemy>().GetDamage());
+                float damageTaken = other.gameObject.GetComponent<Enemy>().GetDamage() - armor;
+                if(damageTaken < 0)
+                {
+                    health.TakeDamage(5);
+                }
+                else
+                {
+                    health.TakeDamage(damageTaken);
+                }
 
                 if (health.GetHealth() <= 0)
                 {
@@ -82,12 +91,8 @@ public class Player : MonoBehaviour
 
     public float GetDamage()
     {
-        return damage + weapon.GetComponent<Weapon>().GetDamage();
+        return damage + weaponDamage;
     }
-
-
-
-
 
     IEnumerator Attack()
     {

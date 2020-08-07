@@ -10,14 +10,17 @@ public class Item : MonoBehaviour
     //id para identificar qual é esse itens dentre todos os itens do jogo
     //public int allItensId;
     public string type;
-    public int value;
+    public float value;
     public GameObject prefab;
     public Sprite sprite;
+    public bool pickedUp;
+
     //Se o item for potion colocar se é de vida ou de mana
+    [Header("Se o tipo não for Potion deixar em branco")]
     public string typePotion;
     
     
-    public bool pickedUp;
+    
     private bool near;
 
     private new Collider collider;

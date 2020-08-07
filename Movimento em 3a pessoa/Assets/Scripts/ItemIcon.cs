@@ -11,13 +11,17 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public string itemType;
     public int amount = 0;
     public string potionType;
+    public float itemValue;
 
     Transform parentToReturn;
     GameObject canvas;
 
+    GameObject destroyMenu;
+
     private void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas");
+        destroyMenu = GameObject.FindGameObjectWithTag("DestroyMenu");
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -33,6 +37,12 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log(eventData.pointerEnter.name);
+        if (eventData.pointerEnter.CompareTag("Inventory"))
+        {
+            destroyMenu.GetComponent<MenuDestroyItem>().itemIcon = this;
+            destroyMenu.transform.GetChild(0).gameObject.SetActive(true);
+        }
         
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         transform.SetParent(parentToReturn);
@@ -52,6 +62,7 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         itemId = item.id;
         itemType = item.type;
+        itemValue = item.value;
         gameObject.GetComponent<Image>().sprite = item.sprite;
 
         if (item.type.Equals("Potion"))
@@ -75,5 +86,12 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         transform.GetChild(0).gameObject.GetComponent<Text>().text = "" + amount;
 
+    }
+
+
+    public void JuntarPotion(int amountNewPotion)
+    {
+        amount += amountNewPotion;
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = "" + amount;
     }
 }

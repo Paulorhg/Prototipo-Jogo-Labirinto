@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.7, y: 31.4}
+  m_AnchoredPosition: {x: 31, y: 25.8}
   m_SizeDelta: {x: 77.83952, y: 69.8401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4105161421589606704
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6103151, b: 0.6103151, a: 1}
+  m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -169,6 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 0
   itemType: 
+  amount: 0
+  potionType: 
+  itemValue: 0
 --- !u!225 &5659793520113388549
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -26,6 +26,8 @@ public class ItensManager : MonoBehaviour
     GameObject shieldArm;
     GameObject chest;
 
+    Player player;
+
 
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class ItensManager : MonoBehaviour
         weaponArm = GameObject.FindGameObjectWithTag("Weapon");
         shieldArm = GameObject.FindGameObjectWithTag("Shield");
         chest = GameObject.FindGameObjectWithTag("Armor");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         //if (weaponArm.transform.childCount == 0)
         //{
@@ -76,6 +79,8 @@ public class ItensManager : MonoBehaviour
                 weaponEquipped.SetActive(false);
             }
             weaponEquipped = null;
+            player.weaponDamage = 0;
+            return;
         }
 
         for(int i = 0; i < weaponArm.transform.childCount; i++)
@@ -89,7 +94,8 @@ public class ItensManager : MonoBehaviour
                 }
                 weaponEquipped = weaponArm.transform.GetChild(i).gameObject;
                 weaponEquipped.SetActive(true);
-                break;
+                player.weaponDamage = weaponEquipped.GetComponent<Item>().value;
+                return;
             }
         }
     }
@@ -100,23 +106,32 @@ public class ItensManager : MonoBehaviour
         {
             if (shieldEquipped != null)
             {
+                player.armor -= shieldEquipped.GetComponent<Item>().value;
                 shieldEquipped.SetActive(false);
             }
             shieldEquipped = null;
+            return;
         }
+
+        Item newShield;
+        float equippedValue = 0;
 
         for (int i = 0; i < shieldArm.transform.childCount; i++)
         {
-            if (shieldArm.transform.GetChild(i).GetComponent<Item>().id == newId)
+            newShield = shieldArm.transform.GetChild(i).GetComponent<Item>();
+
+            if (newShield.id == newId)
             {
 
                 if (shieldEquipped != null)
                 {
+                    equippedValue = shieldEquipped.GetComponent<Item>().value;
                     shieldEquipped.SetActive(false);
                 }
-                shieldEquipped = shieldArm.transform.GetChild(i).gameObject;
+                player.armor += newShield.value - equippedValue;
+                shieldEquipped = newShield.gameObject;
                 shieldEquipped.SetActive(true);
-                break;
+                return;
             }
         }
     }
@@ -127,23 +142,32 @@ public class ItensManager : MonoBehaviour
         {
             if (armorEquipped != null)
             {
+                player.armor -= armorEquipped.GetComponent<Item>().value;
                 armorEquipped.SetActive(false);
             }
             armorEquipped = null;
+            return;
         }
+
+        Item newArmor;
+        float equippedValue = 0;
 
         for (int i = 0; i < chest.transform.childCount; i++)
         {
-            if (chest.transform.GetChild(i).GetComponent<Item>().id == newId)
+            newArmor = shieldArm.transform.GetChild(i).GetComponent<Item>();
+
+            if (newArmor.id == newId)
             {
 
                 if (armorEquipped != null)
                 {
+                    equippedValue = armorEquipped.GetComponent<Item>().value;
                     armorEquipped.SetActive(false);
                 }
+                player.armor += newArmor.value - equippedValue;
                 armorEquipped = chest.transform.GetChild(i).gameObject;
                 armorEquipped.SetActive(true);
-                break;
+                return;
             }
         }
     }

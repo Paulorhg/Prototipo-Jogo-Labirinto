@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IDropHandler
 {
 
-    [SerializeField]
-    private string type;
-    
+    public string type;
 
     private ItensManager ItensManager;
     public GameObject Item
@@ -56,6 +54,7 @@ public class Slot : MonoBehaviour, IDropHandler
                     return;
                 }
 
+
                 itemIcon.ChangeParent(transform);
             }
 
@@ -68,12 +67,15 @@ public class Slot : MonoBehaviour, IDropHandler
                 {
                     if (itemIcon.potionType.Equals(itemNoSlot.potionType))
                     {
-                        itemNoSlot.amount += itemIcon.amount;
+                        itemNoSlot.JuntarPotion(itemIcon.amount);
                         Destroy(itemIcon.gameObject);
                         return;
                     }
                 }
-                
+
+                else if (typeSlotAnterior.Equals("Potion") && itemNoSlot.itemType != "Potion")
+                    return;
+
                 //se tirar o item de algum slot do character
                 else if (typeSlotAnterior.Equals("Weapon"))
                 {
@@ -177,7 +179,7 @@ public class Slot : MonoBehaviour, IDropHandler
 
                     if (itemIcon.potionType.Equals(itemNoSlot.potionType))
                     {
-                        itemNoSlot.amount += itemIcon.amount;
+                        itemNoSlot.JuntarPotion(itemIcon.amount);
                         Destroy(itemIcon.gameObject);
                     }
                     else
