@@ -63,14 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\InventoryMaster\Editor\CraftSystemEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\EquipmentSystemEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\HotbarEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\IM_Manager.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\InventoryDesignEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\InventoryEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\StorageInventoryEditor.cs" />
-    <Compile Include="Assets\InventoryMaster\Editor\TooltipEditor.cs" />
+    <Compile Include="Assets\NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs" />
+    <Compile Include="Assets\NavMeshComponents\Editor\NavMeshLinkEditor.cs" />
+    <Compile Include="Assets\NavMeshComponents\Editor\NavMeshModifierEditor.cs" />
+    <Compile Include="Assets\NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs" />
+    <Compile Include="Assets\NavMeshComponents\Editor\NavMeshSurfaceEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
