@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 8513387223094013961}
   - component: {fileID: 5602397447574438697}
   - component: {fileID: 7677150565847195621}
+  - component: {fileID: 6159053720586817426}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Weapon
@@ -704,6 +705,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6159053720586817426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513387223093718057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3723f9596d1dc6342a3a2ec3e6dbe63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponEquipped: {fileID: 0}
+  damage: 5
 --- !u!1 &8513387223093718059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,8 +1909,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  damage: 5
-  weaponDamage: 0
   armor: 0
 --- !u!1 &8513387223093718491
 GameObject:

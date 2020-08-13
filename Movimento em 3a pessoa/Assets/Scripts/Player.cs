@@ -11,9 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     HealthBar health;
 
-    [SerializeField]
-    private float damage;
-    public float weaponDamage;
     public float armor;
 
 
@@ -54,44 +51,37 @@ public class Player : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void Hitted(float damage)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        Shield shieldScr = shield.GetComponent<Shield>();
+        if (shieldScr.GetDefended())
         {
-            Shield shieldScr = shield.GetComponent<Shield>();
-            if (shieldScr.GetDefended())
+            shieldScr.DefenseDone();
+            Debug.Log("Defendido");
+        }
+        else
+        {
+            Debug.Log("inimigo bateu");
+            float damageTaken = damage - armor;
+            if (damageTaken < 0)
             {
-                shieldScr.DefenseDone();
-                Debug.Log("Defendido");
+                health.TakeDamage(5);
+                GetComponent<ThirdPersonMovement>().Hitted();
             }
             else
             {
-                Debug.Log("inimigo bateu");
-                float damageTaken = other.gameObject.GetComponent<Enemy>().GetDamage() - armor;
-                if(damageTaken < 0)
-                {
-                    health.TakeDamage(5);
-                }
-                else
-                {
-                    health.TakeDamage(damageTaken);
-                }
-
-                if (health.GetHealth() <= 0)
-                {
-                    _anim.SetBool("dead", true);
-                }
-                else
-                    StartCoroutine("GetHit");
+                health.TakeDamage(damageTaken);
+                GetComponent<ThirdPersonMovement>().Hitted();
             }
-            
+
+            if (health.GetHealth() <= 0)
+            {
+                _anim.SetBool("dead", true);
+            }
+            else
+                StartCoroutine("GetHit");
         }
-    }
-
-
-    public float GetDamage()
-    {
-        return damage + weaponDamage;
     }
 
     IEnumerator Attack()

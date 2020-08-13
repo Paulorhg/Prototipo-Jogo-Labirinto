@@ -51,4 +51,9 @@ public class ThirdPersonMovement : MonoBehaviour
             anim.SetBool("walk", false);
 
     }
+
+    public void Hitted()
+    {
+        controller.Move(Vector3.back.normalized * speed * Time.deltaTime);
+    }
 }

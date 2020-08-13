@@ -79,7 +79,7 @@ public class ItensManager : MonoBehaviour
                 weaponEquipped.SetActive(false);
             }
             weaponEquipped = null;
-            player.weaponDamage = 0;
+            weaponArm.GetComponent<Weapon>().weaponEquipped = null;
             return;
         }
 
@@ -94,7 +94,7 @@ public class ItensManager : MonoBehaviour
                 }
                 weaponEquipped = weaponArm.transform.GetChild(i).gameObject;
                 weaponEquipped.SetActive(true);
-                player.weaponDamage = weaponEquipped.GetComponent<Item>().value;
+                weaponArm.GetComponent<Weapon>().weaponEquipped = weaponEquipped.GetComponent<Item>();
                 return;
             }
         }
