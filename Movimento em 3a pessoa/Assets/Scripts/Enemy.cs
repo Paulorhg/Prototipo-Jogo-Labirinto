@@ -27,8 +27,6 @@ public class Enemy : MonoBehaviour
         enemyRespawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemyRespawn>();
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
-
     }
 
     private void Update()
@@ -66,7 +64,6 @@ public class Enemy : MonoBehaviour
         {
             inRange = true;
             StartCoroutine("Attack");
-
         }
     }
 
@@ -80,7 +77,6 @@ public class Enemy : MonoBehaviour
         if (!_hitted)
         {
             healthBar.TakeDamage(damage);
-            StartCoroutine("SingleHit");
             if (healthBar.GetHealth() <= 0)
             {
                 enemyRespawn.RespawnEnemy();
@@ -89,10 +85,9 @@ public class Enemy : MonoBehaviour
                 GetComponent<CapsuleCollider>().enabled = false;
                 Destroy(gameObject, 3.5f);
             }
+            StartCoroutine("SingleHit");
         }
     }
-
-   
 
     IEnumerator SingleHit()
     {
@@ -119,7 +114,5 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(.65f);
             _hit = false;
         }
-        
     }
-
 }
