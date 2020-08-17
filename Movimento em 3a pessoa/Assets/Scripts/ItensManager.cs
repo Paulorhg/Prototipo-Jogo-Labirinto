@@ -110,6 +110,7 @@ public class ItensManager : MonoBehaviour
                 shieldEquipped.SetActive(false);
             }
             shieldEquipped = null;
+            shieldArm.GetComponent<Shield>().shieldEquipped = false;
             return;
         }
 
@@ -131,6 +132,7 @@ public class ItensManager : MonoBehaviour
                 player.armor += newShield.value - equippedValue;
                 shieldEquipped = newShield.gameObject;
                 shieldEquipped.SetActive(true);
+                shieldArm.GetComponent<Shield>().shieldEquipped = true;
                 return;
             }
         }

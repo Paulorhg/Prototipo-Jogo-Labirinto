@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    private bool defended;
+    public bool defended;
+    public bool shieldEquipped;
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && shieldEquipped == true)
         {
             defended = true;
         }
     }
 
-    public bool GetDefended()
+    private void OnTriggerExit(Collider other)
     {
-        return defended;
-    }
-
-    public void DefenseDone()
-    {
-        defended = false;
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            defended = false;
+        }
     }
 }

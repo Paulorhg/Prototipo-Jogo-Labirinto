@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     public float armor;
 
+    Shield shieldScr;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
         _anim = GetComponent<Animator>();
         shield = GameObject.FindGameObjectWithTag("Shield");
         weapon = GameObject.FindGameObjectWithTag("Weapon");
-
+        shieldScr = shield.GetComponent<Shield>();
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
         {
             _anim.SetBool("defend", false);
             shield.GetComponent<BoxCollider>().enabled = false;
-            shield.GetComponent<Shield>().DefenseDone();
+            shieldScr.defended = false;
         }
             
 
@@ -54,17 +55,16 @@ public class Player : MonoBehaviour
 
     public void Hitted(float damage)
     {
-        Shield shieldScr = shield.GetComponent<Shield>();
-        if (shieldScr.GetDefended())
+        
+        if (shieldScr.defended)
         {
-            shieldScr.DefenseDone();
             Debug.Log("Defendido");
         }
         else
         {
             Debug.Log("inimigo bateu");
             float damageTaken = damage - armor;
-            if (damageTaken < 0)
+            if (damageTaken <= 0)
             {
                 health.TakeDamage(5);
                 GetComponent<ThirdPersonMovement>().Hitted();

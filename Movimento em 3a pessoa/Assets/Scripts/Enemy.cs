@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private HealthBar healthBar;
     private bool _hitted;
     private bool _hit;
+    private bool inRange;
     private Player player;
     EnemyRespawn enemyRespawn;
     float distancia = 500;
@@ -33,11 +34,15 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         distancia = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log(distancia);
-        if(distancia <= maxChaseDistance && distancia >= minChaseDistance && !anim.GetBool("attack") && !anim.GetBool("getHit") && !anim.GetBool("dead"))
+        if(distancia <= maxChaseDistance && distancia >= minChaseDistance && !_hit && !anim.GetBool("getHit") && !anim.GetBool("dead"))
         {
             agent.SetDestination(player.transform.position);
             anim.SetBool("walk", true);
+        }
+        else if(distancia <= minChaseDistance)
+        {
+            agent.SetDestination(transform.position);
+            anim.SetBool("walk", false);
         }
         else
         {
@@ -59,9 +64,15 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !anim.GetBool("getHit") && !_hit)
         {
+            inRange = true;
             StartCoroutine("Attack");
-            player.Hitted(_damage);
+
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        inRange = false;
     }
 
     public void Hitted(float damage)
@@ -96,13 +107,19 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Attack()
     {
-        if (anim.GetBool("walk"))
-            anim.SetBool("walk", false);
-        _hit = true;
-        anim.SetBool("attack", true);
-        yield return new WaitForSeconds(.90f);
-        _hit = false;
-        anim.SetBool("attack", false);
+        while (inRange && healthBar.health > 0)
+        {
+            if (anim.GetBool("walk"))
+                anim.SetBool("walk", false);
+            _hit = true;
+            anim.SetBool("attack", true);
+            yield return new WaitForSeconds(.25f);
+            player.Hitted(_damage);
+            anim.SetBool("attack", false);
+            yield return new WaitForSeconds(.65f);
+            _hit = false;
+        }
+        
     }
 
 }

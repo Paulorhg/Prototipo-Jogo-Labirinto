@@ -85,7 +85,6 @@ public class ItemIcon : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         transform.GetChild(0).gameObject.GetComponent<Text>().text = "" + amount;
-
     }
 
 
