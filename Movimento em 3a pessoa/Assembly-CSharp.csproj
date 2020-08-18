@@ -73,18 +73,18 @@
     <Compile Include="Assets\Scripts\EnemyRespawn.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\Hotbar.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\Scripts\ItemIcon.cs" />
-    <Compile Include="Assets\Scripts\ItensManager.cs" />
-    <Compile Include="Assets\Scripts\MenuDestroyItem.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Shield.cs" />
-    <Compile Include="Assets\Scripts\Slot.cs" />
-    <Compile Include="Assets\Scripts\Storage.cs" />
-    <Compile Include="Assets\Scripts\ThirdPersonMovement.cs" />
-    <Compile Include="Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\DestroyItemMenu.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\Hotbar.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\Inventory.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\Item.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\ItemIcon.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\ItensManager.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\Slot.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\Storage.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\Shield.cs" />
+    <Compile Include="Assets\Scripts\Player\ThirdPersonMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <None Include="Assets\InventoryMaster\readme.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -635,8 +635,23 @@
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -655,6 +670,9 @@
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/Windows/Documents/Unity/Projetos/Prototipo-Jogo-Labirinto/Movimento em 3a pessoa/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

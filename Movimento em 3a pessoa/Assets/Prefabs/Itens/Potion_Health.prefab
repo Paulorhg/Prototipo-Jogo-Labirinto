@@ -177,8 +177,9 @@ MonoBehaviour:
   value: 50
   prefab: {fileID: 5053534992570064537}
   sprite: {fileID: 21300000, guid: 3ac254c0fa6214047a1df59938ba786f, type: 3}
-  typePotion: Health
   pickedUp: 0
+  typePotion: Health
+  amount: 4
 --- !u!136 &4279016054726670936
 CapsuleCollider:
   m_ObjectHideFlags: 0
