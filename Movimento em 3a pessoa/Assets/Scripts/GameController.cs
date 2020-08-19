@@ -13,6 +13,18 @@ public class GameController : MonoBehaviour
     [SerializeField]
     Image gameOver;
 
+    [SerializeField]
+    GameObject inventory;
+    [SerializeField]
+    GameObject character;
+    [SerializeField]
+    GameObject storage;
+    [SerializeField]
+    GameObject camera3Person;
+    [SerializeField]
+    ThirdPersonMovement movement;
+ 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +37,19 @@ public class GameController : MonoBehaviour
         if(health.GetHealth() <= 0)
         {
             StartCoroutine("Death");
+        }
+
+        if(inventory.activeSelf || character.activeSelf || storage.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            camera3Person.SetActive(false);
+            movement.enabled = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            camera3Person.SetActive(true);
+            movement.enabled = true;
         }
     }
 

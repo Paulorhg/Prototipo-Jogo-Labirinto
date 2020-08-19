@@ -45,13 +45,10 @@ public class Inventory : MonoBehaviour
             if (inventoryEnable == true)
             {
                 inventory.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 inventory.SetActive(false);
-                if (characterEnable == false)
-                    Cursor.lockState = CursorLockMode.Locked;
             }
         }
 
@@ -62,13 +59,10 @@ public class Inventory : MonoBehaviour
             if (characterEnable == true)
             {
                 character.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 character.SetActive(false);
-                if (inventoryEnable == false)
-                    Cursor.lockState = CursorLockMode.Locked;
             }
         }
 

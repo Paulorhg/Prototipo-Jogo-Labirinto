@@ -33,46 +33,16 @@ public class Storage : MonoBehaviour
                 _open = !_open;
                 _anim.SetBool("open", _open);
 
-                //Quando abre o bau cria os icones e coloca como filho nos slots
+                
                 if (_open)
                 {
-                    for (int i = 0; i < itens.Length; i++)
-                    {
-                        if (itens[i] != null)
-                        {
-                            GameObject itemIcon = Instantiate(itemIconPrefab, storage.transform.GetChild(0).GetChild(i).transform);
-                            itemIcon.GetComponent<ItemIcon>().Inicializado(itens[i]);
-                            
-                            if (itens[i].type.Equals("Potion"))
-                            {
-                                itemIcon.GetComponent<ItemIcon>().JuntarPotion(amountPotion[i] - 1);
-                            }
-                        }
-                    }
-
-                    Cursor.lockState = CursorLockMode.None;
+                    OpenChest();
                 }
-                //Quando fecha o bau copia o estado dos itens e depois destroi os icones
+                
                 else
                 {
-                    Cursor.lockState = CursorLockMode.Locked;
 
-                    for (int i = 0; i < itens.Length; i++)
-                    {
-                        
-                        if (storage.transform.GetChild(0).GetChild(i).childCount != 0)
-                        {
-                            itens[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().item;
-                           
-                            if(storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().itemType.Equals("Potion"))
-                                amountPotion[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().amount;
-                           
-                            Destroy(storage.transform.GetChild(0).GetChild(i).GetChild(0).gameObject);
-                        }
-                            
-                        else
-                            itens[i] = null;
-                    }
+                    CloseChest();
                 }
 
                 storage.SetActive(_open);
@@ -105,23 +75,50 @@ public class Storage : MonoBehaviour
                 _open = !_open;
                 _anim.SetBool("open", _open);
                 storage.SetActive(_open);
-                Cursor.lockState = CursorLockMode.Locked;
 
-                for (int i = 0; i < itens.Length; i++)
-                {
-                    if (storage.transform.GetChild(0).GetChild(i).childCount != 0)
-                    {
-                        itens[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().item;
-                        if (storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().itemType.Equals("Potion"))
-                            amountPotion[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().amount;
-                        Destroy(storage.transform.GetChild(0).GetChild(i).GetChild(0).gameObject);
-                    }
-                        
-                    else
-                        itens[i] = null;
-                }
+                CloseChest();
             }
         }
 
+    }
+
+
+    private void OpenChest()
+    {
+        //Quando abre o bau, cria os icones e coloca como filho nos slots
+        for (int i = 0; i < itens.Length; i++)
+        {
+            if (itens[i] != null)
+            {
+                GameObject itemIcon = Instantiate(itemIconPrefab, storage.transform.GetChild(0).GetChild(i).transform);
+                itemIcon.GetComponent<ItemIcon>().Inicializado(itens[i]);
+
+                if (itens[i].type.Equals("Potion"))
+                {
+                    itemIcon.GetComponent<ItemIcon>().JuntarPotion(amountPotion[i] - 1);
+                }
+            }
+        }
+    }
+
+    private void CloseChest()
+    {
+        //Quando fecha o bau, copia o estado dos itens e depois destroi os icones
+        for (int i = 0; i < itens.Length; i++)
+        {
+
+            if (storage.transform.GetChild(0).GetChild(i).childCount != 0)
+            {
+                itens[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().item;
+
+                if (storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().itemType.Equals("Potion"))
+                    amountPotion[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().amount;
+
+                Destroy(storage.transform.GetChild(0).GetChild(i).GetChild(0).gameObject);
+            }
+
+            else
+                itens[i] = null;
+        }
     }
 }

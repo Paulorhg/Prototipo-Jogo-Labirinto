@@ -122,6 +122,9 @@ public class Slot : MonoBehaviour, IDropHandler
                 ItensManager.ChangeWeapon(itemIcon.itemId);
             }
         }
+
+        /////////////////////////////////////////////////////////////////////////////
+        
         if (type.Equals("Armor"))
         {
             if (itemIcon.itemType.Equals("Armor"))
