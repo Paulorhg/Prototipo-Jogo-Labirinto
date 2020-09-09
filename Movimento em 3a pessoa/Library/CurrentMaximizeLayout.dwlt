@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 3053
+  controlID: 155
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 3054
+  controlID: 156
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 3055
+  controlID: 157
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,8 +187,8 @@ MonoBehaviour:
     y: 0
     width: 201
     height: 496
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -225,21 +225,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16f9ffff66fbffff
+      m_ExpandedIDs: 66fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Wall (2)
-        m_OriginalName: Wall (2)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 14420
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -313,9 +313,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -15.250341, y: 3.4652357, z: -19.390568}
+    m_Target: {x: 6.334736, y: 5.7013884, z: -3.2135305}
     speed: 2
-    m_Value: {x: -15.250341, y: 3.4652357, z: -19.390568}
+    m_Value: {x: 6.334736, y: 5.7013884, z: -3.2135305}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -361,13 +361,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.09154715, y: -0.86962897, z: 0.1761113, w: -0.45206955}
+    m_Target: {x: -0.1339848, y: -0.11507802, z: 0.01567187, w: -0.9841642}
     speed: 2
-    m_Value: {x: -0.09154635, y: -0.8696214, z: 0.17610976, w: -0.45206562}
+    m_Value: {x: -0.1339835, y: -0.11507689, z: 0.015671717, w: -0.9841546}
   m_Size:
-    m_Target: 14.287346
+    m_Target: 6.12266
     speed: 2
-    m_Value: 14.287346
+    m_Value: 6.12266
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -637,9 +637,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c410000
-    m_LastClickedID: 16780
-    m_ExpandedIDs: 00000000624100006441000066410000684100006a410000
+    m_SelectedIDs: 86410000
+    m_LastClickedID: 16774
+    m_ExpandedIDs: 000000005c4100005e410000604100006241000064410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -667,7 +667,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000624100006441000066410000684100006a410000
+    m_ExpandedIDs: 000000005c4100005e410000604100006241000064410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -692,8 +692,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 32380000
-    m_LastClickedInstanceID: 14386
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000545f000042600000a061000072460000623c0000803c0000924500005c3c00004a3f000020460000423f0000503c0000463c00003c3c00004c3c0000c6470000da470000d247000000000000e2390000844100005e3d0000ba37000028410000083d0000943b00004c3e0000603e0000a6370000cc3c0000823c00005e620000f6410000a43b0000fa410000843b00005a3f0000aa3f0000
     m_RenameOverlay:
@@ -812,7 +812,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 14386
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
 --- !u!114 &17
 MonoBehaviour:

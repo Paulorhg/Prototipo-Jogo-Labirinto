@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    //id para identificar o prefab do item
+    
     public int id;
-    //id para identificar qual é esse itens dentre todos os itens do jogo
-    //public int allItensId;
     public string type;
     public float value;
     public GameObject prefab;
@@ -24,7 +22,7 @@ public class Item : MonoBehaviour
     private new Collider collider;
     private GameObject inventory;
 
-
+    
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");

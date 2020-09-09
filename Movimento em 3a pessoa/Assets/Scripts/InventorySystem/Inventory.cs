@@ -81,11 +81,11 @@ public class Inventory : MonoBehaviour
                 {
                     GameObject itemIcon = Instantiate(itemIconPrefab, slots[i].transform);
                     itemIcon.GetComponent<ItemIcon>().Inicializado(item);
-                    Destroy(item.gameObject);
+                    item.gameObject.SetActive(false);
                     break;
                 }
 
-                if (slots[i].transform.GetChild(0).GetComponent<ItemIcon>().potionType == item.typePotion)
+                if (slots[i].transform.GetChild(0).GetComponent<ItemIcon>().item.typePotion == item.typePotion)
                 {
                     slots[i].transform.GetChild(0).GetComponent<ItemIcon>().JuntarPotion(1);
                     Destroy(item.gameObject);

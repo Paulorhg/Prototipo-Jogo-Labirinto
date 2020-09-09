@@ -111,7 +111,7 @@ public class Storage : MonoBehaviour
             {
                 itens[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().item;
 
-                if (storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().itemType.Equals("Potion"))
+                if (storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().item.type.Equals("Potion"))
                     amountPotion[i] = storage.transform.GetChild(0).GetChild(i).GetChild(0).GetComponent<ItemIcon>().amount;
 
                 Destroy(storage.transform.GetChild(0).GetChild(i).GetChild(0).gameObject);

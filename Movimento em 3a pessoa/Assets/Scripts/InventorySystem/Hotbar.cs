@@ -23,9 +23,9 @@ public class Hotbar : MonoBehaviour
             {
                 ItemIcon potion = slot1.GetChild(0).GetComponent<ItemIcon>();
                 
-                if (potion.potionType.Equals("Health"))
+                if (potion.item.typePotion.Equals("Health"))
                 {
-                    health.RestoreHealth(potion.itemValue);
+                    health.RestoreHealth(potion.item.value);
                     potion.PotionUsed();
                 }
                 else
@@ -42,9 +42,9 @@ public class Hotbar : MonoBehaviour
             {
                 ItemIcon potion = slot2.GetChild(0).GetComponent<ItemIcon>();
                 potion.PotionUsed();
-                if (potion.potionType.Equals("Health"))
+                if (potion.item.typePotion.Equals("Health"))
                 {
-                    health.RestoreHealth(potion.itemValue);
+                    health.RestoreHealth(potion.item.value);
                 }
                 else
                 {
