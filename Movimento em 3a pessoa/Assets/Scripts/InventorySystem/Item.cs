@@ -22,6 +22,21 @@ public class Item : MonoBehaviour
     private new Collider collider;
     private GameObject inventory;
 
+    public Item() { }
+
+    public Item(Item item)
+    {
+        this.id = item.id;
+        this.type = item.type;
+        this.value = item.value;
+        this.prefab = item.prefab;
+        this.sprite = item.sprite;
+        this.pickedUp = true;
+
+
+        if (item.type.Equals("Potion"))
+            this.typePotion = item.typePotion;
+    }
     
     private void Start()
     {

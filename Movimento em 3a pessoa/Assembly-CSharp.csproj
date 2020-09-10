@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\InventorySystem\Hotbar.cs" />
     <Compile Include="Assets\Scripts\InventorySystem\Inventory.cs" />
     <Compile Include="Assets\Scripts\InventorySystem\Item.cs" />
+    <Compile Include="Assets\Scripts\InventorySystem\ItemHolder.cs" />
     <Compile Include="Assets\Scripts\InventorySystem\ItemIcon.cs" />
     <Compile Include="Assets\Scripts\InventorySystem\ItensManager.cs" />
     <Compile Include="Assets\Scripts\InventorySystem\Slot.cs" />
